@@ -9,6 +9,7 @@ public class Main {
         lessonsService.createLessons();
         lessonsService.createLessons();
         lessonsService.createLessons();
+        lessonsService.createLessons();
 
         Lessons.countOfClass();
     }
