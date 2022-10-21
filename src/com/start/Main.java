@@ -11,7 +11,10 @@ public class Main {
         lessonsService.createLessons();
         lessonsService.createLessons();
         lessonsService.createLessons();
+<<<<<<< HEAD
         lessonsService.createLessons();
+=======
+>>>>>>> main
 
         Lessons.countOfClass();
     }
