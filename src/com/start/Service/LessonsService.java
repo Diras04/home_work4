@@ -3,8 +3,9 @@ package com.start.Service;
 import com.start.Courses.Lessons;
 
 public class LessonsService {
-    public Lessons createLessons(){
-        Lessons lessonsServ = new Lessons();
+    public static Lessons createLessons(String name, String homeWork, String dopInfo){
+        Lessons lessonsServ = new Lessons( name, homeWork, dopInfo);
+
         return lessonsServ;
     }
 }

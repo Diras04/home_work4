@@ -1,17 +1,29 @@
 package com.start.Courses;
 
 public class Lessons {
-    static int count;
+
     private String name;
-    private int id;
+    private static int id;
     private String homeWork;
     private String dopInfo;
+    public int courseId;
 
-    public Lessons(){
-        count++;
+    public Lessons(String name, String homeWork, String dopInfo) {
+        this.name = name;
+        this.homeWork = homeWork;
+        this.dopInfo = dopInfo;
+        this.courseId = Courses.id;
+        id++;
     }
-    public static void countOfClass(){
 
-        System.out.println("ExplCls - " + count);
+    @Override
+    public String toString() {
+        return "Lessons{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", homeWork='" + homeWork + '\'' +
+                ", dopInfo='" + dopInfo + '\'' +
+                ", courseId=" + courseId +
+                '}';
     }
 }
