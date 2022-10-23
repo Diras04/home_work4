@@ -6,16 +6,90 @@ import com.start.Courses.Students;
 import com.start.Courses.Teachers;
 import com.start.Service.CoursesService;
 import com.start.Service.LessonsService;
+import com.start.Service.TeachersService;
+import com.start.Service.StudentsService;
+
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.Scanner;
 //import com.start.Service.CoursesService;
 
 public class Main {
+
     public static void main(String[] args) {
-        System.out.println(CoursesService.createCourses());
-        System.out.println(LessonsService.createLessons("Mathematic", "Page23", "Page 24"));
-        System.out.println(LessonsService.createLessons("Mathematic", "Page24", "Page 25"));
-        System.out.println(LessonsService.createLessons("Mathematic", "Page25", "Page 26"));
-        System.out.println(LessonsService.createLessons("Mathematic", "Page26", "Page 27"));
-        System.out.println(LessonsService.createLessons("Mathematic", "Page27", "Page 28"));
-        System.out.println(LessonsService.createLessons("Mathematic", "Page28", "Page 29"));
+        ArrayList<Lessons> lessonsArrayList = new ArrayList<>();
+
+        LessonsService lectioin = new LessonsService(lessonsArrayList);
+        Scanner scanner = new Scanner(System.in);
+        int k=0;
+        while ( k !=5){
+        System.out.println("Select a category");
+        System.out.println("Courses - press 1");
+        System.out.println("Teacher - press 2");
+        System.out.println("Students - press 3");
+        System.out.println("Lessons create - press 4");
+        System.out.println("Exit - prees 5");
+
+         k = scanner.nextInt();
+         scanner.nextLine();
+         switch (k){
+             case 1:
+                 System.out.println(CoursesService.createCourses());
+
+                 break;
+             case 2:
+                 System.out.println(TeachersService.createTeachers());
+                 break;
+             case 3:
+                 System.out.println(StudentsService.createStudents());
+                 break;
+             case 4:
+
+            System.out.println("enter the title of the lecture");
+            String name = scanner.nextLine();
+            System.out.println("enter the home work");
+            String homeWork = scanner.nextLine();
+            System.out.println("enter the dopinfo");
+            String dopInfo = scanner.nextLine();
+            lectioin.addLessons(new Lessons(name, homeWork, dopInfo));
+            System.out.println(lectioin);
+                 System.out.println("Count of Lessons - " + Lessons.idstatik);
+            break;
+             case 5:
+                 break;
+
+        }
+
+        }
     }
 }
+
+
+       /*ArrayList<Teachers> teachersarray = new ArrayList<>();
+        ArrayList<Students> studentsarray = new ArrayList<>();
+        ArrayList<Lessons> lessonsarray = new ArrayList<>();
+
+        teachersarray.add(new Teachers("Belozerov"));
+        teachersarray.add(new Teachers("Kovalchik F.B."));
+        teachersarray.add(new Teachers("Makogon"));
+
+        studentsarray.add(new Students("Derkach"));
+        studentsarray.add(new Students("Goosarev"));
+        studentsarray.add(new Students("Slobodjanik"));
+
+        lessonsarray.add(new Lessons("Cryptography","Fermat's theorem","Learn matrix forms"));
+        lessonsarray.add(new Lessons("Analytical geometry","Stewart's theorem","Very difficult"));
+        lessonsarray.add(new Lessons("C++","Classes","Practice programming"));*/
+    /*    {
+            TeachersService first = new TeachersService(teachersarray);
+        }
+        StudentsService second = new StudentsService(studentsarray);
+        LessonsService third = new LessonsService(lessonsarray);
+        Courses fouth = new Courses("Math", third.getByName("C++"), second.getByName("Derkach"), first.getByName("Makogon"));
+        third.getByName("C++").setCourseId(fouth.id);
+
+
+        System.out.println(first);
+        System.out.println(second);
+        System.out.println(third);*/
+

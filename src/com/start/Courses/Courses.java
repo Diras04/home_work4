@@ -1,35 +1,37 @@
 package com.start.Courses;
 
 import java.util.Objects;
+
 import com.start.Courses.Lessons;
 
 public class Courses {
 
     private String name;
-     public static int id;
-    String lessonsName;
-    String studentsName;
-    String teachersName;
+    private static int idstatik;
+    public  int id;
+    Lessons lessonsinfo;
+    Students studentinfo;
+    Teachers teacherinfo;
 
-    public Courses(String name, String lessonsName, String studentsName, String teachersName) {
-        this.name = name;
-        this.lessonsName = lessonsName;
-        this.studentsName = studentsName;
-        this.teachersName = teachersName;
-        id++;
+    public Courses(String inname, Lessons inlessons, Students instudents, Teachers inteachers) {
+        this.name = inname;
+        this.lessonsinfo = inlessons;
+        this.studentinfo = instudents;
+        this.teacherinfo = inteachers;
+        idstatik++;
+        this.id = idstatik;
+        this.lessonsinfo.setCourseId(this.id);
 
     }
-
-
 
     @Override
     public String toString() {
         return "Courses{" +
                 "name='" + name + '\'' +
                 ", id=" + id +
-                ", lessonsName='" + lessonsName + '\'' +
-                ", studentsName='" + studentsName + '\'' +
-                ", teachersName='" + teachersName + '\'' +
+                ", lessonsinfo=" + lessonsinfo +
+                ", studentinfo=" + studentinfo +
+                ", teacherinfo=" + teacherinfo +
                 '}';
     }
 }
