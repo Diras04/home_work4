@@ -7,7 +7,7 @@ import com.start.Courses.Lessons;
 public class Courses {
 
     private String name;
-    private static int idstatik;
+    public static int idstatik;
     public  int id;
     Lessons lessonsinfo;
     Students studentinfo;

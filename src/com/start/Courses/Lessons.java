@@ -13,7 +13,7 @@ public class Lessons {
         this.name = name;
         this.homeWork = homeWork;
         this.dopInfo = dopInfo;
-        this.courseId = -1;
+        this.courseId = Courses.idstatik;
         idstatik++;
         this.id = idstatik;
     }
