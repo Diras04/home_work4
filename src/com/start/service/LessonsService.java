@@ -1,6 +1,6 @@
-package com.start.Service;
+package com.start.service;
 
-import com.start.Courses.Lessons;
+import com.start.courses.Lessons;
 
 import java.util.ArrayList;
 

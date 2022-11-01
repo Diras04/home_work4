@@ -1,11 +1,9 @@
-package com.start.Service;
+package com.start.service;
 
-import com.start.Courses.Courses;
-import com.start.Courses.Lessons;
-import com.start.Courses.Teachers;
-import com.start.Courses.Students;
-import com.start.Service.LessonsService;
-
+import com.start.courses.Courses;
+import com.start.courses.Lessons;
+import com.start.courses.Teachers;
+import com.start.courses.Students;
 
 
 public class CoursesService {

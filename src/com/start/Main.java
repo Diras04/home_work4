@@ -1,18 +1,14 @@
 package com.start;
 
-import com.start.Courses.Lessons;
-import com.start.Courses.Courses;
-import com.start.Courses.Students;
-import com.start.Courses.Teachers;
-import com.start.Service.CoursesService;
-import com.start.Service.LessonsService;
-import com.start.Service.TeachersService;
-import com.start.Service.StudentsService;
+import com.start.courses.Lessons;
+import com.start.service.CoursesService;
+import com.start.service.LessonsService;
+import com.start.service.TeachersService;
+import com.start.service.StudentsService;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
-//import com.start.Service.CoursesService;
+
 
 public class Main {
 

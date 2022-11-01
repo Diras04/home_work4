@@ -1,4 +1,4 @@
-package com.start.Courses;
+package com.start.courses;
 
 public class Lessons {
 

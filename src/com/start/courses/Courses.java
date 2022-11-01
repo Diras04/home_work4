@@ -1,8 +1,4 @@
-package com.start.Courses;
-
-import java.util.Objects;
-
-import com.start.Courses.Lessons;
+package com.start.courses;
 
 public class Courses {
 

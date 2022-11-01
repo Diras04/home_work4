@@ -1,7 +1,6 @@
-package com.start.Service;
+package com.start.service;
 
-import com.start.Courses.Students;
-import com.start.Courses.Teachers;
+import com.start.courses.Students;
 
 import java.util.ArrayList;
 

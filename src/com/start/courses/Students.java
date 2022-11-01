@@ -1,15 +1,14 @@
-package com.start.Courses;
+package com.start.courses;
 
-public class Teachers {
+public class Students {
     private String name;
     private static int idstatic;
     private int id;
 
-    public Teachers(String name) {
+    public Students(String name) {
         this.name = name;
         idstatic++;
         this.id = idstatic;
-
     }
 
     public String getName() {
@@ -22,7 +21,7 @@ public class Teachers {
 
     @Override
     public String toString() {
-        return "Teachers{" +
+        return "Students{" +
                 "name='" + name + '\'' +
                 ", id=" + id +
                 '}';
