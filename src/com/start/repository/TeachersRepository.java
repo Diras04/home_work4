@@ -1,26 +1,27 @@
 package com.start.repository;
 
+
 import com.start.courses.Teachers;
 
 public class TeachersRepository {
-    static int i = 0;
+    static int size = 0;
 
 
-    int size = 1;
-    Teachers[] TeachersArray = new Teachers[size];
+    int lenght = 1;
+    Teachers[] TeachersArray = new Teachers[lenght];
 
 
     public void addTeachersToArray(Teachers courses) {
 
 
-        if (i < TeachersArray.length) {
-            TeachersArray[i] = courses;
+        if (size < TeachersArray.length) {
+            TeachersArray[size] = courses;
         } else {
             addSizeArray();
-            TeachersArray[i] = courses;
+            TeachersArray[size] = courses;
 
         }
-        i++;
+        size++;
 
 
     }
@@ -35,6 +36,8 @@ public class TeachersRepository {
     }
 
     public Teachers[] getTeachersArray() {
-        return TeachersArray;
+        Teachers[] teachersArray1 = new Teachers[size];
+        System.arraycopy(TeachersArray, 0, teachersArray1, 0, size);
+        return teachersArray1;
     }
 }

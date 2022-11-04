@@ -2,27 +2,26 @@ package com.start.repository;
 
 import com.start.courses.Courses;
 
-import java.util.Arrays;
 
 public class CoursesRepository {
-    static int i = 0;
+    static int size = 0;
 
 
-    int size = 1;
-    Courses[] coursesArray = new Courses[size];
+    int length = 1;
+    Courses[] coursesArray = new Courses[length];
 
 
     public void addCoursesToArray(Courses courses) {
 
 
-        if (i < coursesArray.length) {
-            coursesArray[i] = courses;
+        if (size < coursesArray.length) {
+            coursesArray[size] = courses;
         } else {
             addSizeArray();
-            coursesArray[i] = courses;
+            coursesArray[size] = courses;
 
         }
-        i++;
+        size++;
 
 
     }
@@ -36,14 +35,20 @@ public class CoursesRepository {
 
     }
 
-    public Courses[] getCoursesArray() {
-        return coursesArray;
+    public boolean checkId(int inId) {
+        for (int j = 0; j < size; j++) {
+            if (coursesArray[j].id == inId) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    @Override
-    public String toString() {
-        return "CoursesRepository{" +
-                "coursesArray=" + Arrays.toString(coursesArray) +
-                '}';
+    public Courses[] getCoursesArray() {
+        Courses[] coursesarray1 = new Courses[size];
+        System.arraycopy(coursesArray, 0, coursesarray1, 0, size);
+        return coursesarray1;
     }
+
+
 }

@@ -4,7 +4,7 @@ public class Courses {
 
     private String name;
     public static int idstatik;
-    public  int id;
+    public int id;
     Lessons lessonsinfo;
     Students studentinfo;
     Teachers teacherinfo;
@@ -18,6 +18,30 @@ public class Courses {
         this.id = idstatik;
         this.lessonsinfo.setCourseId(this.id);
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static int getIdstatik() {
+        return idstatik;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Lessons getLessonsinfo() {
+        return lessonsinfo;
+    }
+
+    public Students getStudentinfo() {
+        return studentinfo;
+    }
+
+    public Teachers getTeacherinfo() {
+        return teacherinfo;
     }
 
     @Override

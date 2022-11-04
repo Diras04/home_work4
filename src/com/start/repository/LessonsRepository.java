@@ -3,24 +3,24 @@ package com.start.repository;
 import com.start.courses.Lessons;
 
 public class LessonsRepository {
-    static int i = 0;
+    public static int size = 0;
 
 
-    int size = 1;
-    Lessons[] lessonsArray = new Lessons[size];
+    int length = 1;
+    Lessons[] lessonsArray = new Lessons[length];
 
 
     public void addLessonsToArray(Lessons lessons) {
 
 
-        if (i < lessonsArray.length) {
-            lessonsArray[i] = lessons;
+        if (size < lessonsArray.length) {
+            lessonsArray[size] = lessons;
         } else {
             addSizeArray();
-            lessonsArray[i] = lessons;
+            lessonsArray[size] = lessons;
 
         }
-        i++;
+        size++;
 
 
     }
@@ -35,6 +35,8 @@ public class LessonsRepository {
     }
 
     public Lessons[] getLessonsArray() {
-        return lessonsArray;
+        Lessons[] lessonsarray1 = new Lessons[size];
+        System.arraycopy(lessonsArray, 0, lessonsarray1, 0, size);
+        return lessonsarray1;
     }
 }

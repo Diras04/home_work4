@@ -3,24 +3,24 @@ package com.start.repository;
 import com.start.courses.Students;
 
 public class StudentsRepository {
-    static int i = 0;
+    static int size = 0;
 
 
-    int size = 1;
-    Students[] studentsArray = new Students[size];
+    int length = 1;
+    Students[] studentsArray = new Students[length];
 
 
     public void addStudentsToArray(Students students) {
 
 
-        if (i < studentsArray.length) {
-            studentsArray[i] = students;
+        if (size < studentsArray.length) {
+            studentsArray[size] = students;
         } else {
             addSizeArray();
-            studentsArray[i] = students;
+            studentsArray[size] = students;
 
         }
-        i++;
+        size++;
 
 
     }
@@ -35,6 +35,8 @@ public class StudentsRepository {
     }
 
     public Students[] getStudentsArray() {
-        return studentsArray;
+        Students[] students1 = new Students[size];
+        System.arraycopy(studentsArray, 0, students1, 0, size);
+        return students1;
     }
 }
