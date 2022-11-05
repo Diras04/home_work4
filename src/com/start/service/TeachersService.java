@@ -13,12 +13,9 @@ public class TeachersService {
 
     public void printTeachersArray(Teachers[] teachersArray) {
         for (Teachers n : teachersArray) {
-            if (n != null) {
-                System.out.println("Id - " + n.getId() + "; Name - " + n.getName());
 
-            } else {
-                return;
-            }
+            System.out.println("Id - " + n.getId() + "; Name - " + n.getName());
+
         }
 
     }

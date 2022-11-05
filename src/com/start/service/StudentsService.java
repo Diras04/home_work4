@@ -12,12 +12,10 @@ public class StudentsService {
 
     public void printStudentsArray(Students[] StudentsArray) {
         for (Students n : StudentsArray) {
-            if (n != null) {
-                System.out.println("Id - " + n.getId() + "; Name - " + n.getName());
 
-            } else {
-                return;
-            }
+            System.out.println("Id - " + n.getId() + "; Name - " + n.getName());
+
+
         }
 
     }
