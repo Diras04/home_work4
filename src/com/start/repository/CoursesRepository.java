@@ -37,7 +37,7 @@ public class CoursesRepository {
 
     public boolean checkId(int inId) {
         for (int j = 0; j < size; j++) {
-            if (coursesArray[j].id == inId) {
+            if (coursesArray[j].getId() == inId) {
                 return true;
             }
         }

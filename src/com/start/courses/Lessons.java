@@ -1,34 +1,27 @@
 package com.start.courses;
 
-public class Lessons {
+public class Lessons extends SuperObject {
 
-    private String name;
-    public static int idstatik;
-    private int id;
+
+    public static int idstatik = 1;
+
     private String homeWork;
     private String dopInfo;
     public int courseId;
 
     public Lessons(String name, String homeWork, String dopInfo) {
-        this.name = name;
+        super(name, idstatik);
         this.homeWork = homeWork;
         this.dopInfo = dopInfo;
         this.courseId = Courses.idstatik;
         idstatik++;
-        this.id = idstatik;
+
     }
 
     public void setCourseId(int courseId) {
         this.courseId = courseId;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getId() {
-        return id;
-    }
 
     public String getHomeWork() {
         return homeWork;

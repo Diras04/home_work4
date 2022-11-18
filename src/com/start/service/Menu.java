@@ -40,7 +40,7 @@ public class Menu {
             scanner.nextLine();
             switch (k) {
                 case 1:
-                    CoursesService.createCourses();
+                    CoursesService.createCourses(lesson,studentsRepository,teachersRepository,cr);
                     break;
                 case 2:
                     teachersRepository.addTeachersToArray(TeachersService.createTeachers());
@@ -91,7 +91,7 @@ public class Menu {
                         lesson.addLessonsToArray(L);
                         System.out.println("Lessons:");
 
-                        lessonsService.printLessonsArray(lesson.getLessonsArray());
+                        lessonsService.printLessonsArray(lesson.getAll());
                         System.out.println("Count of Lessons - " + Lessons.idstatik);
                     }
                     break;
@@ -101,7 +101,7 @@ public class Menu {
                     break;
                 case 6:
                     System.out.println("Base Lessons:");
-                    lessonsService.printLessonsArray(lesson.getLessonsArray());
+                    lessonsService.printLessonsArray(lesson.getAll());
                     break;
                 case 7:
                     System.out.println("Base Students:");

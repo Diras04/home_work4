@@ -11,26 +11,34 @@ import com.start.repository.TeachersRepository;
 
 
 public class CoursesService {
+    LessonsRepository lessonsRepository;
+    StudentsRepository studentsRepository;
+    TeachersRepository teachersRepository;
+    CoursesRepository coursesRepository;
 
-    public static void createCourses() {
-        CoursesRepository cr = new CoursesRepository();
-        LessonsRepository lesson = new LessonsRepository();
-        StudentsRepository studentsRepository = new StudentsRepository();
-        TeachersRepository teachersRepository = new TeachersRepository();
+
+    public CoursesService() {
+
+    }
+
+    public static void createCourses(LessonsRepository lessonsRepository, StudentsRepository studentsRepository,
+                                     TeachersRepository teachersRepository,CoursesRepository coursesRepository) {
+
+
         CoursesService coursesService = new CoursesService();
-
         Lessons firstLesson = new Lessons("Discrete mathematics", "Page 25",
                 "learn it");
         Students firstStudent = new Students("Bazaleev");
         Teachers firstTeacher = new Teachers("Simonova");
-        cr.addCoursesToArray(new Courses("Math", firstLesson, firstStudent, firstTeacher));
 
-        lesson.addLessonsToArray(firstLesson);
+        coursesRepository.addCoursesToArray(new Courses("Math", firstLesson, firstStudent, firstTeacher));
+
+        lessonsRepository.addLessonsToArray(firstLesson);
         teachersRepository.addTeachersToArray(firstTeacher);
         studentsRepository.addStudentsToArray(firstStudent);
-        lesson.addLessonsToArray(new Lessons("An.Geomertry", "Page 28", "learn it"));
-        lesson.addLessonsToArray(new Lessons("MathAn", "Page 29", "learn it"));
-        coursesService.printCoursesArray(cr.getCoursesArray());
+        lessonsRepository.addLessonsToArray(new Lessons("An.Geomertry", "Page 28", "learn it"));
+        lessonsRepository.addLessonsToArray(new Lessons("MathAn", "Page 29", "learn it"));
+        coursesService.printCoursesArray(coursesRepository.getCoursesArray());
 
     }
 
