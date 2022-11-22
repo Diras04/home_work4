@@ -12,7 +12,6 @@ public class LessonsRepository extends SuperRepository {
     Lessons[] lessonsArray = new Lessons[length];
 
 
-
     public void addLessonsToArray(Lessons lessons) {
 
 
@@ -43,11 +42,45 @@ public class LessonsRepository extends SuperRepository {
         return lessonsarray1;
     }*/
 
+
     @Override
     public Lessons[] getAll() {
         Lessons[] lessonsarray1 = new Lessons[size];
         System.arraycopy(lessonsArray, 0, lessonsarray1, 0, size);
         return lessonsarray1;
     }
+
+    @Override
+    public void getById(int id) {
+        super.getById(id);
+        for (Lessons n : getAll()) {
+
+            if (n.getId() == id) {
+                System.out.println(n);
+            }
+
+
+        }
+    }
+
+    @Override
+    public Lessons[] deleteById(int id) {
+        super.deleteById(id);
+        for (int i = 0; i < size; i++) {
+            if (lessonsArray[i].getId() == id) {
+                for (int j = i; j < size - i; j++) {
+                    lessonsArray[j] = lessonsArray[j + 1];
+                }
+                size--;
+                lessonsArray[size] = null;
+
+                break;
+            }
+        }
+
+
+        return getAll();
+    }
+
 
 }

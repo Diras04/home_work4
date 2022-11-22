@@ -34,6 +34,8 @@ public class Menu {
             System.out.println("Show all Students - press 7 *** ");
             System.out.println("Show all Teachers - press 8 *** ");
             System.out.println("Show all Courses - press 9 *** ");
+            System.out.println("Find Lesson by Id - press 10 ***");
+            System.out.println("Delete Lesson by id - press 11 ***");
             System.out.println("Exit - prees 5");
 
             k = scanner.nextInt();
@@ -67,10 +69,10 @@ public class Menu {
                         String dopInfo = scanner.nextLine();
                         int courseId = 0;
 
-                        if (cr.getCoursesArray().length > 0) {
+                        if (cr.getAll().length > 0) {
                             while (true) {
                                 System.out.println("All created Courses:");
-                                coursesService.printCoursesArray(cr.getCoursesArray());
+                                coursesService.printCoursesArray(cr.getAll());
 
                                 System.out.println("Enter the course ID");
 
@@ -111,9 +113,20 @@ public class Menu {
                     System.out.println("Base Teachers:");
                     teachersService.printTeachersArray(teachersRepository.getTeachersArray());
                     break;
+                case 10:
+                    System.out.println("Enter lesson id");
+                    int id = scanner.nextInt();
+                    lesson.getById(id);
+                    break;
+                case 11:
+                    System.out.println("Enter lesson id to delete");
+                    int idDel = scanner.nextInt();
+                    lessonsService.printLessonsArray(lesson.deleteById(idDel));
+                    break;
+
                 case 9:
                     System.out.println("Base Courses:");
-                    coursesService.printCoursesArray(cr.getCoursesArray());
+                    coursesService.printCoursesArray(cr.getAll());
                     break;
 
                 default:

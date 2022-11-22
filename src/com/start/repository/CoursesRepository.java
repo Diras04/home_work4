@@ -1,9 +1,10 @@
 package com.start.repository;
 
 import com.start.courses.Courses;
+import com.start.courses.Lessons;
 
 
-public class CoursesRepository {
+public class CoursesRepository extends SuperRepository {
     static int size = 0;
 
 
@@ -43,11 +44,42 @@ public class CoursesRepository {
         }
         return false;
     }
-
-    public Courses[] getCoursesArray() {
+    @Override
+    public Courses[] getAll() {
         Courses[] coursesarray1 = new Courses[size];
         System.arraycopy(coursesArray, 0, coursesarray1, 0, size);
         return coursesarray1;
+    }
+    @Override
+    public void getById(int id) {
+        super.getById(id);
+        for (Courses n : getAll()) {
+
+            if (n.getId() == id) {
+                System.out.println(n);
+            }
+
+
+        }
+    }
+
+    @Override
+    public Courses[] deleteById(int id) {
+        super.deleteById(id);
+        for (int i = 0; i < size; i++) {
+            if (coursesArray[i].getId() == id) {
+                for (int j = i; j < size - i; j++) {
+                    coursesArray[j] = coursesArray[j + 1];
+                }
+                size--;
+                coursesArray[size] = null;
+
+                break;
+            }
+        }
+
+
+        return getAll();
     }
 
 

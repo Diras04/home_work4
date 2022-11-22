@@ -38,7 +38,7 @@ public class CoursesService {
         studentsRepository.addStudentsToArray(firstStudent);
         lessonsRepository.addLessonsToArray(new Lessons("An.Geomertry", "Page 28", "learn it"));
         lessonsRepository.addLessonsToArray(new Lessons("MathAn", "Page 29", "learn it"));
-        coursesService.printCoursesArray(coursesRepository.getCoursesArray());
+        coursesService.printCoursesArray(coursesRepository.getAll());
 
     }
 
