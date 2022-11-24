@@ -4,15 +4,14 @@ public class Courses extends SuperObject {
 
     public static int idstatik = 1;
     private Lessons lessonsinfo;
-    private Students studentinfo;
-    private Teachers teacherinfo;
+    private Person studentinfo;
 
-    public Courses(String inname, Lessons inlessons, Students instudents, Teachers inteachers) {
+
+    public Courses(String inname, Lessons inlessons, Person instudents) {
 
         super(inname, idstatik);
         this.lessonsinfo = inlessons;
         this.studentinfo = instudents;
-        this.teacherinfo = inteachers;
         this.lessonsinfo.setCourseId(this.idstatik);
         idstatik++;
 
@@ -26,13 +25,11 @@ public class Courses extends SuperObject {
         return lessonsinfo;
     }
 
-    public Students getStudentinfo() {
+    public Person getStudentinfo() {
         return studentinfo;
     }
 
-    public Teachers getTeacherinfo() {
-        return teacherinfo;
-    }
+
 
     @Override
     public String toString() {
@@ -41,7 +38,7 @@ public class Courses extends SuperObject {
                 ", id=" + id +
                 ", lessonsinfo=" + lessonsinfo +
                 ", studentinfo=" + studentinfo +
-                ", teacherinfo=" + teacherinfo +
+
                 '}';
     }
 }

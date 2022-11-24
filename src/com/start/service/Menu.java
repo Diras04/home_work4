@@ -2,6 +2,8 @@ package com.start.service;
 
 
 import com.start.courses.Lessons;
+import com.start.courses.Person;
+import com.start.courses.Role;
 import com.start.repository.CoursesRepository;
 import com.start.repository.LessonsRepository;
 import com.start.repository.StudentsRepository;
@@ -23,6 +25,7 @@ public class Menu {
                 TeachersRepository();
         StudentsRepository studentsRepository = new StudentsRepository();
         Scanner scanner = new Scanner(System.in);
+
         int k = 0;
         while (k != 5) {
             System.out.println("Select a category:");
@@ -67,6 +70,9 @@ public class Menu {
                         String homeWork = scanner.nextLine();
                         System.out.println("Enter the dopinfo");
                         String dopInfo = scanner.nextLine();
+                        System.out.println("Enter teachers name");
+                        String teachname = scanner.nextLine();
+                       Person person = new Person(teachname, Role.TEACHER);
                         int courseId = 0;
 
                         if (cr.getAll().length > 0) {
@@ -87,7 +93,7 @@ public class Menu {
                             }
                         }
 
-                        Lessons L = new Lessons(name, homeWork, dopInfo);
+                        Lessons L = new Lessons(name, homeWork, dopInfo,person);
                         L.setCourseId(courseId);
 
                         lesson.addLessonsToArray(L);

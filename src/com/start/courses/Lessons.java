@@ -8,12 +8,14 @@ public class Lessons extends SuperObject {
     private String homeWork;
     private String dopInfo;
     public int courseId;
+    private Person person;
 
-    public Lessons(String name, String homeWork, String dopInfo) {
+    public Lessons(String name, String homeWork, String dopInfo, Person teacherinfo) {
         super(name, idstatik);
         this.homeWork = homeWork;
         this.dopInfo = dopInfo;
         this.courseId = Courses.idstatik;
+        this.person = teacherinfo;
         idstatik++;
 
     }
@@ -31,14 +33,19 @@ public class Lessons extends SuperObject {
         return dopInfo;
     }
 
+    public Person getPerson() {
+        return person;
+    }
+
     @Override
     public String toString() {
         return "Lessons{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", homeWork='" + homeWork + '\'' +
+                "homeWork='" + homeWork + '\'' +
                 ", dopInfo='" + dopInfo + '\'' +
                 ", courseId=" + courseId +
+                ", person=" + person +
+                ", name='" + name + '\'' +
+                ", id=" + id +
                 '}';
     }
 }

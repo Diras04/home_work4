@@ -40,11 +40,6 @@ public class LessonsRepository extends SuperRepository {
 
     }
 
-  /*  public Lessons[] getLessonsArray() {
-        Lessons[] lessonsarray1 = new Lessons[size];
-        System.arraycopy(lessonsArray, 0, lessonsarray1, 0, size);
-        return lessonsarray1;
-    }*/
 
 
     @Override

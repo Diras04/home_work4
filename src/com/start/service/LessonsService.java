@@ -9,7 +9,7 @@ public class LessonsService {
 
 
             System.out.println("Id - " + n.getId() + "; Name - " + n.getName() + "; CourseId - " + n.courseId +
-                    "; HomeWork - " + n.getHomeWork() + "; Dop info - " + n.getDopInfo());
+                    "; HomeWork - " + n.getHomeWork() + "; Dop info - " + n.getDopInfo() + "; Teacher - " +  n.getPerson());
 
         }
 
