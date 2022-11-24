@@ -28,6 +28,10 @@ public class LessonsRepository extends SuperRepository {
     }
 
 
+    public void add() {
+
+    }
+
     private void addSizeArray() {
         Lessons[] longLessonsArray = new Lessons[((lessonsArray.length) * 3 / 2) + 1];
         System.arraycopy(lessonsArray, 0, longLessonsArray, 0, lessonsArray.length);

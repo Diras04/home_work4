@@ -13,6 +13,7 @@ public class SuperRepository {
 
     public void add() {
 
+
     }
 
     public void getById(int id) {
