@@ -2,9 +2,9 @@ package com.start.courses;
 
 public class SuperObject {
 
-     String name;
+    protected String name;
 
-     int id;
+    protected int id;
 
 
     public SuperObject(String name, int id) {
