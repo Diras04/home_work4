@@ -12,6 +12,8 @@ import com.start.repository.TeachersRepository;
 
 import java.util.Scanner;
 
+import static java.lang.Character.*;
+
 public class Menu {
 
     public void mainMenu() {
@@ -45,7 +47,7 @@ public class Menu {
             scanner.nextLine();
             switch (k) {
                 case 1:
-                    CoursesService.createCourses(lesson,studentsRepository,teachersRepository,cr);
+                    CoursesService.createCourses(lesson, studentsRepository, teachersRepository, cr);
                     break;
                 case 2:
                     teachersRepository.addTeachersToArray(TeachersService.createTeachers());
@@ -54,6 +56,7 @@ public class Menu {
                     studentsRepository.addStudentsToArray(StudentsService.createStudents());
                     break;
                 case 4:
+
                     for (int i = 1; i <= 8; i++) {
 
                         System.out.println("Enter the title of the lecture, or enter stop to go main menu");
@@ -68,11 +71,54 @@ public class Menu {
 
                         System.out.println("Enter the home work");
                         String homeWork = scanner.nextLine();
+                        System.out.println("Description");
+                        String description = scanner.nextLine();
                         System.out.println("Enter the dopinfo");
                         String dopInfo = scanner.nextLine();
-                        System.out.println("Enter teachers name");
-                        String teachname = scanner.nextLine();
-                       Person person = new Person(teachname, Role.TEACHER);
+
+                        String firstName;
+                        while (true) {
+                            System.out.println("Enter teachers First name");
+                            firstName = scanner.nextLine();
+                            if (lessonsService.chekName(firstName)) {
+                                break;
+                            }
+
+                            System.out.println("Enter First letter capital ");
+
+                        }
+                        String lastName;
+                        while (true) {
+                            System.out.println("Enter teachers Last name");
+                            lastName = scanner.nextLine();
+                            if (lessonsService.chekName(lastName)) {
+                                break;
+                            }
+
+                            System.out.println("Enter First letter capital");
+                        }
+                        String phone;
+
+                        while (true) {
+                            System.out.println("Enter teachers phone");
+                            phone = scanner.nextLine();
+
+                            if (lessonsService.checkPhone(phone)) {
+                                break;
+                            }
+                            System.out.println("Enter only numbers ");
+                        }
+                        String email;
+                        while (true) {
+                            System.out.println("Enter teachers Email");
+                            email = scanner.nextLine();
+                            if (lessonsService.checkEmail(email)) {
+                                break;
+                            }
+                            System.out.println("Enter real email");
+                        }
+
+                        Person person = new Person(firstName, lastName, phone, email, Role.TEACHER);
                         int courseId = 0;
 
                         if (cr.getAll().length > 0) {
@@ -93,7 +139,7 @@ public class Menu {
                             }
                         }
 
-                        Lessons L = new Lessons(name, homeWork, dopInfo,person);
+                        Lessons L = new Lessons(name, homeWork, dopInfo, person, description);
                         L.setCourseId(courseId);
 
                         lesson.addLessonsToArray(L);
