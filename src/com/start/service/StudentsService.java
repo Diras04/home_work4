@@ -1,19 +1,23 @@
 package com.start.service;
 
-import com.start.courses.Students;
 
+import com.start.courses.Person;
+import com.start.courses.Role;
 
 public class StudentsService {
 
-    public static Students createStudents() {
-        Students studentsServ = new Students("Derkach");
+    public static Person createStudents() {
+        Role role = Role.STUDENT;
+        Person studentsServ = new Person("Andriy","Derkach",
+                "0977320951","dira_s@gmail.com", role);
         return studentsServ;
     }
 
-    public void printStudentsArray(Students[] StudentsArray) {
-        for (Students n : StudentsArray) {
+    public void printStudentsArray(Person[] StudentsArray) {
+        for (Person n : StudentsArray) {
 
-            System.out.println("Id - " + n.getId() + "; Name - " + n.getName());
+            System.out.println("Id - " + n.getId() + "; First Name - " + n.getName()+ "; Last Name - "
+                    + n.getLastname()+ "; Phone - " + n.getPhone()+ "; Email - " + n.getEmail()+ "; Role - " + n.getRole());
 
 
         }

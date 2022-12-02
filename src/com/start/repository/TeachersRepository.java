@@ -1,17 +1,17 @@
 package com.start.repository;
 
 
-import com.start.courses.Teachers;
+import com.start.courses.Person;
 
 public class TeachersRepository {
     static int size = 0;
 
 
     int lenght = 1;
-    Teachers[] TeachersArray = new Teachers[lenght];
+    Person[] TeachersArray = new Person[lenght];
 
 
-    public void addTeachersToArray(Teachers courses) {
+    public void addTeachersToArray(Person courses) {
 
 
         if (size < TeachersArray.length) {
@@ -28,15 +28,15 @@ public class TeachersRepository {
 
 
     private void addSizeArray() {
-        Teachers[] longTeachersArray = new Teachers[((TeachersArray.length) * 3 / 2) + 1];
+        Person[] longTeachersArray = new Person[((TeachersArray.length) * 3 / 2) + 1];
         System.arraycopy(TeachersArray, 0, longTeachersArray, 0, TeachersArray.length);
         TeachersArray = longTeachersArray;
 
 
     }
 
-    public Teachers[] getTeachersArray() {
-        Teachers[] teachersArray1 = new Teachers[size];
+    public Person[] getTeachersArray() {
+        Person[] teachersArray1 = new Person[size];
         System.arraycopy(TeachersArray, 0, teachersArray1, 0, size);
         return teachersArray1;
     }
