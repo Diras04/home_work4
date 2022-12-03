@@ -1,6 +1,6 @@
 package com.start.repository;
 
-import com.start.courses.Person;
+import com.start.models.Person;
 
 public class StudentsRepository {
     static int size = 0;

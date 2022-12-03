@@ -1,8 +1,6 @@
 package com.start.repository;
 
-import com.start.courses.Courses;
-import com.start.courses.Lessons;
-import com.start.courses.SuperObject;
+import com.start.models.Lessons;
 
 public class LessonsRepository extends SuperRepository {
     public static int size = 0;

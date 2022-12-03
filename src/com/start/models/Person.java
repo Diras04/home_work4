@@ -1,4 +1,4 @@
-package com.start.courses;
+package com.start.models;
 
 public class Person extends SuperObject{
     private static int idstatik = 1;

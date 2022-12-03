@@ -1,8 +1,7 @@
-package com.start.courses;
+package com.start.models;
 
 public enum Role {
-<<<<<<< HEAD
-=======
+
     TEACHER("teacher"),
     STUDENT("student");
     private final String role;
@@ -21,5 +20,5 @@ public enum Role {
                 "role='" + role + '\'' +
                 '}';
     }
->>>>>>> task12
+
 }

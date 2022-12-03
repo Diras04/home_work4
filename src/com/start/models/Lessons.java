@@ -1,4 +1,4 @@
-package com.start.courses;
+package com.start.models;
 
 public class Lessons extends SuperObject {
 

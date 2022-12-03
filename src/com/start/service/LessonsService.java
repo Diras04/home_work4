@@ -1,6 +1,6 @@
 package com.start.service;
 
-import com.start.courses.Lessons;
+import com.start.models.Lessons;
 
 import static java.lang.Character.*;
 

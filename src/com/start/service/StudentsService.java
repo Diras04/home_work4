@@ -1,8 +1,8 @@
 package com.start.service;
 
 
-import com.start.courses.Person;
-import com.start.courses.Role;
+import com.start.models.Person;
+import com.start.models.Role;
 
 public class StudentsService {
 

@@ -1,8 +1,6 @@
 package com.start.repository;
 
-import com.start.courses.SuperObject;
-
-import java.util.Arrays;
+import com.start.models.SuperObject;
 
 public class SuperRepository {
 

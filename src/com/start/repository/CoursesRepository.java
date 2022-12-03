@@ -1,7 +1,6 @@
 package com.start.repository;
 
-import com.start.courses.Courses;
-import com.start.courses.Lessons;
+import com.start.models.Courses;
 
 
 public class CoursesRepository extends SuperRepository {

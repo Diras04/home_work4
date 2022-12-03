@@ -1,9 +1,9 @@
 package com.start.service;
 
 
-import com.start.courses.Lessons;
-import com.start.courses.Person;
-import com.start.courses.Role;
+import com.start.models.Lessons;
+import com.start.models.Person;
+import com.start.models.Role;
 import com.start.repository.CoursesRepository;
 import com.start.repository.LessonsRepository;
 import com.start.repository.StudentsRepository;
@@ -11,8 +11,6 @@ import com.start.repository.TeachersRepository;
 
 
 import java.util.Scanner;
-
-import static java.lang.Character.*;
 
 public class Menu {
 
