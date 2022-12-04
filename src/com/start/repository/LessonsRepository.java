@@ -1,6 +1,7 @@
 package com.start.repository;
 
 import com.start.models.Lessons;
+import com.start.service.RepositoryService;
 
 public class LessonsRepository extends SuperRepository {
     public static int size = 0;
@@ -8,6 +9,7 @@ public class LessonsRepository extends SuperRepository {
 
     int length = 1;
     Lessons[] lessonsArray = new Lessons[length];
+
 
 
     public void addLessonsToArray(Lessons lessons) {
