@@ -2,8 +2,9 @@ package com.start.repository;
 
 
 import com.start.models.Person;
+import com.start.service.RepositoryService;
 
-public class TeachersRepository {
+public class TeachersRepository extends RepositoryService {
     static int size = 0;
 
 

@@ -1,6 +1,6 @@
 package com.start.models;
 
-public class SuperObject {
+public abstract class  SuperObject {
 
     protected String name;
 

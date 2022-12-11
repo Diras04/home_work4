@@ -19,11 +19,12 @@ public class Menu {
         StudentsService studentsService = new StudentsService();
         TeachersService teachersService = new TeachersService();
         CoursesService coursesService = new CoursesService();
-        CoursesRepository cr = new CoursesRepository();
+        /*CoursesRepository cr = new CoursesRepository();
         LessonsRepository lesson = new LessonsRepository();
         TeachersRepository teachersRepository = new
                 TeachersRepository();
-        StudentsRepository studentsRepository = new StudentsRepository();
+        StudentsRepository studentsRepository = new StudentsRepository();*/
+        RepositoryService repositoryService = new RepositoryService();
         Scanner scanner = new Scanner(System.in);
 
         int k = 0;

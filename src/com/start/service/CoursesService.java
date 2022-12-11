@@ -4,10 +4,7 @@ import com.start.models.Courses;
 import com.start.models.Lessons;
 import com.start.models.Person;
 import com.start.models.Role;
-import com.start.repository.CoursesRepository;
-import com.start.repository.LessonsRepository;
-import com.start.repository.StudentsRepository;
-import com.start.repository.TeachersRepository;
+import com.start.repository.*;
 
 
 public class CoursesService {
@@ -24,11 +21,11 @@ public class CoursesService {
     public static void createCourses(LessonsRepository lessonsRepository, StudentsRepository studentsRepository,
                                      TeachersRepository teachersRepository,CoursesRepository coursesRepository) {
 
-
         CoursesService coursesService = new CoursesService();
+        HomeworkRepository homeworkRepository =new HomeworkRepository();
         Person firstTeacher = new Person("Elena","Simonova","7531446",
                 "simonova@gmail.com", Role.TEACHER);
-        Lessons firstLesson = new Lessons("Discrete mathematics","Page25", "Page 26",
+        Lessons firstLesson = new Lessons("Discrete mathematics",homeworkRepository.getAll(), "Page 26",
                 firstTeacher,"learn it" );
         Person firstStudent = new Person("Egor","Bazaleev",
                 "781543","bazaleev@gmail.com", Role.STUDENT);

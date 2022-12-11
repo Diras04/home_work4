@@ -3,7 +3,7 @@ package com.start.repository;
 import com.start.models.Lessons;
 import com.start.service.RepositoryService;
 
-public class LessonsRepository extends SuperRepository {
+public class LessonsRepository extends RepositoryService {
     public static int size = 0;
 
 
@@ -43,7 +43,7 @@ public class LessonsRepository extends SuperRepository {
 
 
     @Override
-    public Lessons[] getAll() {
+    public Object[] getAll() {
         Lessons[] lessonsarray1 = new Lessons[size];
         System.arraycopy(lessonsArray, 0, lessonsarray1, 0, size);
         return lessonsarray1;
@@ -51,7 +51,6 @@ public class LessonsRepository extends SuperRepository {
 
     @Override
     public void getById(int id) {
-        super.getById(id);
         for (Lessons n : getAll()) {
 
             if (n.getId() == id) {
@@ -64,7 +63,6 @@ public class LessonsRepository extends SuperRepository {
 
     @Override
     public Lessons[] deleteById(int id) {
-        super.deleteById(id);
         for (int i = 0; i < size; i++) {
             if (lessonsArray[i].getId() == id) {
                 for (int j = i; j < size - i; j++) {

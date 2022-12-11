@@ -1,14 +1,88 @@
 package com.start.service;
 
-import static com.sun.tools.javac.jvm.ByteCodes.newarray;
+import com.start.models.SuperObject;
+import com.start.repository.SuperRepository;
 
-public class RepositoryService<E> {
-    private E[] array;
+public class RepositoryService<E> extends SuperObject implements SuperRepository {
+
+    static int size = 0;
 
 
-    public RepositoryService(E[] array) {
-        this.array = array;
+    int length = 1;
+    E[] array = (E[]) new Object[length];
+
+
+    public void addToArray(E object) {
+
+
+        if (size < array.length) {
+            array[size] = object;
+        } else {
+            addSizeArray();
+            array[size] = object;
+
+        }
+        size++;
+
+
     }
+
+
+    private void addSizeArray() {
+        E[] longArray = (E[]) new Object[((array.length) * 3 / 2) + 1];
+        System.arraycopy(array, 0, longArray, 0, array.length);
+        array = longArray;
+
+
+    }
+
+    public boolean checkId(int inId) {
+        for (int j = 0; j < size; j++) {
+
+            if (array[j] instanceof SuperObject && ((SuperObject) array[j]).getId() == inId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public E[] getAll() {
+        E[] array1 = (E[]) new Object[size];
+        System.arraycopy(array, 0, array1, 0, size);
+        return array1;
+    }
+
+
+    @Override
+    public void getById(int id) {
+        for (E n : getAll()) {
+
+            if (n instanceof SuperObject && ((SuperObject) n).getId() == id) {
+                System.out.println(n);
+            }
+
+
+        }
+    }
+
+    @Override
+    public E[] deleteById(int id) {
+        for (int i = 0; i < size; i++) {
+            if (array[i] instanceof SuperObject && ((SuperObject) array[i]).getId() == id) {
+                for (int j = i; j < size - i; j++) {
+                    array[j] = array[j + 1];
+                }
+                size--;
+                array[size] = null;
+
+                break;
+            }
+        }
+
+
+        return getAll();
+    }
+
 
     public int size() {
         int size = array.length;
@@ -53,3 +127,4 @@ public class RepositoryService<E> {
 
     }
 }
+

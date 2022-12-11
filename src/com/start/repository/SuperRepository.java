@@ -2,24 +2,13 @@ package com.start.repository;
 
 import com.start.models.SuperObject;
 
-public class SuperRepository {
-
-    public SuperObject[] getAll() {
-        SuperObject[] superObjects = new SuperObject[0];
-        return superObjects;
-    }
-
-    public void add() {
+public interface SuperRepository<E> {
 
 
-    }
+    public E[] getAll();
 
-    public void getById(int id) {
 
-    }
+    public void getById(int id);
 
-    public  SuperObject[] deleteById( int id) {
-        SuperObject[] superObjects = new SuperObject[0];
-        return superObjects;
-    }
+    public  E[] deleteById( int id);
 }

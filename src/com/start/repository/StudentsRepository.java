@@ -1,8 +1,9 @@
 package com.start.repository;
 
 import com.start.models.Person;
+import com.start.service.RepositoryService;
 
-public class StudentsRepository {
+public class StudentsRepository extends RepositoryService {
     static int size = 0;
 
 

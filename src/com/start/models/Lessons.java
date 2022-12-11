@@ -5,13 +5,13 @@ public class Lessons extends SuperObject {
 
     public static int idstatik = 1;
 
-    private String homeWork;
+    private Homework[] homeWork;
     private String description;
     private String dopInfo;
     public int courseId;
     private Person person;
 
-    public Lessons(String name, String homeWork, String dopInfo, Person teacherinfo, String description) {
+    public Lessons(String name, Homework[] homeWork, String dopInfo, Person teacherinfo, String description) {
         super(name, idstatik);
         this.homeWork = homeWork;
         this.dopInfo = dopInfo;
@@ -27,7 +27,7 @@ public class Lessons extends SuperObject {
     }
 
 
-    public String getHomeWork() {
+    public Homework[] getHomeWork() {
         return homeWork;
     }
 

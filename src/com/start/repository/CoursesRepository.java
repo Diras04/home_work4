@@ -1,14 +1,16 @@
 package com.start.repository;
 
 import com.start.models.Courses;
+import com.start.service.RepositoryService;
 
 
-public class CoursesRepository extends SuperRepository {
+public class CoursesRepository  extends RepositoryService {
     static int size = 0;
 
 
     int length = 1;
     Courses[] coursesArray = new Courses[length];
+
 
 
     public void addCoursesToArray(Courses courses) {
@@ -43,15 +45,17 @@ public class CoursesRepository extends SuperRepository {
         }
         return false;
     }
+
     @Override
-    public Courses[] getAll() {
+    public Object[] getAll() {
         Courses[] coursesarray1 = new Courses[size];
         System.arraycopy(coursesArray, 0, coursesarray1, 0, size);
         return coursesarray1;
     }
+
+
     @Override
     public void getById(int id) {
-        super.getById(id);
         for (Courses n : getAll()) {
 
             if (n.getId() == id) {
@@ -64,7 +68,6 @@ public class CoursesRepository extends SuperRepository {
 
     @Override
     public Courses[] deleteById(int id) {
-        super.deleteById(id);
         for (int i = 0; i < size; i++) {
             if (coursesArray[i].getId() == id) {
                 for (int j = i; j < size - i; j++) {
