@@ -9,7 +9,7 @@ public class HomeworkService {
         return homework1;
     }
 
-    public void printTeachersArray(Homework[] homeworkArray) {
+    public void printHomeWorkArray(Homework[] homeworkArray) {
         for (Homework n : homeworkArray) {
 
             System.out.println("Id - " + n.getId() + "; Lecture ID - " + n.getLessonId()+ "; Task - "

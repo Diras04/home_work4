@@ -2,6 +2,8 @@ package com.start.service;
 
 import com.start.models.Lessons;
 
+import java.util.Arrays;
+
 import static java.lang.Character.*;
 
 
@@ -40,7 +42,7 @@ public class LessonsService {
 
 
             System.out.println("Id - " + n.getId() + "; Name - " + n.getName() + "; CourseId - " + n.courseId +
-                    "; HomeWork - " + n.getHomeWork() + "; Dop info - " + n.getDopInfo() + "; Teacher - " + n.getPerson());
+                    "; HomeWork - " + Arrays.deepToString(n.getHomeWork() ) + "; Dop info - " + n.getDopInfo() + "; Teacher - " + n.getPerson());
 
         }
 

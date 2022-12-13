@@ -1,13 +1,8 @@
 package com.start.service;
 
 
-import com.start.models.Lessons;
-import com.start.models.Person;
-import com.start.models.Role;
-import com.start.repository.CoursesRepository;
-import com.start.repository.LessonsRepository;
-import com.start.repository.StudentsRepository;
-import com.start.repository.TeachersRepository;
+import com.start.models.*;
+import com.start.repository.*;
 
 
 import java.util.Scanner;
@@ -15,16 +10,18 @@ import java.util.Scanner;
 public class Menu {
 
     public void mainMenu() {
+        RepositoryService homeworkRepository = null;
         LessonsService lessonsService = new LessonsService();
         StudentsService studentsService = new StudentsService();
         TeachersService teachersService = new TeachersService();
         CoursesService coursesService = new CoursesService();
-        /*CoursesRepository cr = new CoursesRepository();
-        LessonsRepository lesson = new LessonsRepository();
-        TeachersRepository teachersRepository = new
-                TeachersRepository();
-        StudentsRepository studentsRepository = new StudentsRepository();*/
-        RepositoryService repositoryService = new RepositoryService();
+        RepositoryService cr = new RepositoryService();
+        RepositoryService lesson = new RepositoryService();
+        RepositoryService teachersRepository = new
+                RepositoryService();
+        RepositoryService studentsRepository = new RepositoryService();
+        //RepositoryService homeworkRepository = new RepositoryService();
+
         Scanner scanner = new Scanner(System.in);
 
         int k = 0;
@@ -49,10 +46,10 @@ public class Menu {
                     CoursesService.createCourses(lesson, studentsRepository, teachersRepository, cr);
                     break;
                 case 2:
-                    teachersRepository.addTeachersToArray(TeachersService.createTeachers());
+                    teachersRepository.addObjectToArray(TeachersService.createTeachers());
                     break;
                 case 3:
-                    studentsRepository.addStudentsToArray(StudentsService.createStudents());
+                    studentsRepository.addObjectToArray(StudentsService.createStudents());
                     break;
                 case 4:
 
@@ -68,8 +65,8 @@ public class Menu {
                         }
 
 
-                        System.out.println("Enter the home work");
-                        String homeWork = scanner.nextLine();
+                       /* System.out.println("Enter the home work");
+                        String homeWork = scanner.nextLine();*/
                         System.out.println("Description");
                         String description = scanner.nextLine();
                         System.out.println("Enter the dopinfo");
@@ -123,7 +120,7 @@ public class Menu {
                         if (cr.getAll().length > 0) {
                             while (true) {
                                 System.out.println("All created Courses:");
-                                coursesService.printCoursesArray(cr.getAll());
+                                coursesService.printCoursesArray((Courses[]) cr.getAll());
 
                                 System.out.println("Enter the course ID");
 
@@ -138,13 +135,13 @@ public class Menu {
                             }
                         }
 
-                        Lessons L = new Lessons(name, homeWork, dopInfo, person, description);
+                        Lessons L = new Lessons(name, (Homework[]) homeworkRepository.getAll(), dopInfo, person, description);
                         L.setCourseId(courseId);
 
-                        lesson.addLessonsToArray(L);
+                        lesson.addObjectToArray(L);
                         System.out.println("Lessons:");
 
-                        lessonsService.printLessonsArray(lesson.getAll());
+                        lessonsService.printLessonsArray((Lessons[]) lesson.getAll());
                         System.out.println("Count of Lessons - " + Lessons.idstatik);
                     }
                     break;
@@ -154,15 +151,15 @@ public class Menu {
                     break;
                 case 6:
                     System.out.println("Base Lessons:");
-                    lessonsService.printLessonsArray(lesson.getAll());
+                    lessonsService.printLessonsArray((Lessons[]) lesson.getAll());
                     break;
                 case 7:
                     System.out.println("Base Students:");
-                    studentsService.printStudentsArray(studentsRepository.getStudentsArray());
+                    studentsService.printStudentsArray((Person[]) studentsRepository.getAll());
                     break;
                 case 8:
                     System.out.println("Base Teachers:");
-                    teachersService.printTeachersArray(teachersRepository.getTeachersArray());
+                    teachersService.printTeachersArray((Person[]) teachersRepository.getAll());
                     break;
                 case 10:
                     System.out.println("Enter lesson id");
@@ -172,12 +169,12 @@ public class Menu {
                 case 11:
                     System.out.println("Enter lesson id to delete");
                     int idDel = scanner.nextInt();
-                    lessonsService.printLessonsArray(lesson.deleteById(idDel));
+                    lessonsService.printLessonsArray((Lessons[]) lesson.deleteById(idDel));
                     break;
 
                 case 9:
                     System.out.println("Base Courses:");
-                    coursesService.printCoursesArray(cr.getAll());
+                    coursesService.printCoursesArray((Courses[]) cr.getAll());
                     break;
 
                 default:

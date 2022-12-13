@@ -1,14 +1,30 @@
 package com.start.repository;
 
-import com.start.models.SuperObject;
+public interface  SuperRepository<E>  {
 
-public interface SuperRepository<E> {
+    public int size();
+
+    public boolean isEmpty();
+
+    public  E get(int index);
+
+    public  void add(E element);
+
+    public  void add(int index, E element);
+
+    public  void remove(int index);
+
+    public  void addObjectToArray(E e);
 
 
-    public E[] getAll();
+      public  boolean checkId(int inId);
 
 
-    public void getById(int id);
+    public E[] getAll() ;
 
-    public  E[] deleteById( int id);
+
+    public  void getById(int id) ;
+
+
+    public  E[] deleteById(int id);
 }
