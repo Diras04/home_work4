@@ -8,7 +8,6 @@ public interface  SuperRepository<E>  {
 
     public  E get(int index);
 
-    public  void add(E element);
 
     public  void add(int index, E element);
 

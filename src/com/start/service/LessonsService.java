@@ -1,5 +1,6 @@
 package com.start.service;
 
+import com.start.models.Homework;
 import com.start.models.Lessons;
 
 import java.util.Arrays;
@@ -37,12 +38,12 @@ public class LessonsService {
 
     public void printLessonsArray(Lessons[] lessonsArray) {
 
-
+        HomeworkService homeworkService = new HomeworkService();
         for (Lessons n : lessonsArray) {
 
 
             System.out.println("Id - " + n.getId() + "; Name - " + n.getName() + "; CourseId - " + n.courseId +
-                    "; HomeWork - " + Arrays.deepToString(n.getHomeWork() ) + "; Dop info - " + n.getDopInfo() + "; Teacher - " + n.getPerson());
+                    "; HomeWork - " + Arrays.deepToString(n.getHomeWork()) + "; Dop info - " + n.getDopInfo() + "; Teacher - " + n.getPerson());
 
         }
 

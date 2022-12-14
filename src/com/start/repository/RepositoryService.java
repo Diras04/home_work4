@@ -4,30 +4,26 @@ import com.start.models.SuperObject;
 
 import java.lang.reflect.Array;
 
-public class RepositoryService<E> extends SuperObject implements SuperRepository<E> {
+public class RepositoryService<E> implements SuperRepository<E> {
     private E[] array;
-    static int size = 0;
+    int size = 0;
     int length = 1;
     Class<E> eClass1;
 
 
-    public RepositoryService(Class <E> eClass) {
+    public RepositoryService(Class<E> eClass) {
         this.array = (E[]) Array.newInstance(eClass, length);
+        this.eClass1 = eClass;
     }
 
-    public RepositoryService() {
-
-    }
 
     public int size() {
-        int size = array.length;
-        return size;
+        return array.length;
     }
 
     public boolean isEmpty() {
-        if (array.length == 0) {
-            return true;
-        } else return false;
+        return array.length == 0;
+
     }
 
     public E get(int index) {
@@ -35,16 +31,8 @@ public class RepositoryService<E> extends SuperObject implements SuperRepository
     }
 
 
-    public void add(E element) {
-        E[] newarray = (E[]) new Object[array.length + 1];
-        newarray = array;
-        newarray[array.length + 1] = element;
-        array = newarray;
-
-    }
-
     public void add(int index, E element) {
-        E[] newarray = (E[]) new Object[array.length + 1];
+        E[] newarray = (E[]) Array.newInstance(eClass1, array.length + 1);
         for (int i = 0; i < index; i++) {
             newarray[i] = array[i];
         }
@@ -81,7 +69,7 @@ public class RepositoryService<E> extends SuperObject implements SuperRepository
 
 
     private void addSizeArray() {
-        E[] longArray = (E[]) new Object[((array.length * 3 / 2) + 1)];
+        E[] longArray = (E[]) Array.newInstance(eClass1, (array.length * 3 / 2) + 1);
         System.arraycopy(array, 0, longArray, 0, array.length);
         array = longArray;
 
@@ -99,7 +87,7 @@ public class RepositoryService<E> extends SuperObject implements SuperRepository
 
 
     public E[] getAll() {
-        E[] array1 = (E[]) new Object[size];
+        E[] array1 = (E[]) Array.newInstance(eClass1, size);
         System.arraycopy(array, 0, array1, 0, size);
         return array1;
     }

@@ -3,6 +3,7 @@ package com.start.service;
 
 import com.start.models.Person;
 import com.start.models.Role;
+import com.start.models.SuperObject;
 
 public class TeachersService {
 

@@ -11,11 +11,8 @@ public abstract class  SuperObject {
         this.name = name;
         this.id = id;
     }
-    public SuperObject(){
-        this.name = "";
-        this.id = -1;
 
-    }
+
 
     public String getName() {
         return name;

@@ -1,6 +1,6 @@
 package com.start.models;
 
-public enum Role {
+public enum Role  {
 
     TEACHER("teacher"),
     STUDENT("student");

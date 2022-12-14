@@ -5,22 +5,24 @@ import com.start.models.*;
 import com.start.repository.*;
 
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Menu {
 
     public void mainMenu() {
-        RepositoryService homeworkRepository = null;
+
         LessonsService lessonsService = new LessonsService();
         StudentsService studentsService = new StudentsService();
         TeachersService teachersService = new TeachersService();
         CoursesService coursesService = new CoursesService();
-        RepositoryService cr = new RepositoryService();
-        RepositoryService lesson = new RepositoryService();
-        RepositoryService teachersRepository = new
-                RepositoryService();
-        RepositoryService studentsRepository = new RepositoryService();
-        //RepositoryService homeworkRepository = new RepositoryService();
+        RepositoryService<Courses> cr = new RepositoryService<>(Courses.class);
+        RepositoryService<Lessons> lesson = new RepositoryService<>(Lessons.class);
+        RepositoryService<Person> teachersRepository = new
+                RepositoryService<>(Person.class);
+        RepositoryService<Person> studentsRepository = new RepositoryService<>(Person.class);
+        RepositoryService<Homework> homeworkRepository = new RepositoryService<>(Homework.class);
+        homeworkRepository.addObjectToArray(HomeworkService.createHomework());
 
         Scanner scanner = new Scanner(System.in);
 
@@ -43,7 +45,31 @@ public class Menu {
             scanner.nextLine();
             switch (k) {
                 case 1:
-                    CoursesService.createCourses(lesson, studentsRepository, teachersRepository, cr);
+
+                    Person firstTeacher = new Person("Elena", "Simonova", "7531446",
+                            "simonova@gmail.com", Role.TEACHER);
+                    Lessons firstLesson = new Lessons("Discrete mathematics", homeworkRepository.getAll(), "Page 26",
+                            firstTeacher, "learn it");
+                    Person firstStudent = new Person("Egor", "Bazaleev",
+                            "781543", "bazaleev@gmail.com", Role.STUDENT);
+
+
+                    cr.addObjectToArray(new Courses("Math", firstLesson, firstStudent));
+                    Person secondTeacher = new Person("Svitlana", "Kovalchik",
+                            "7885219", "kovalchik@gmail.com", Role.TEACHER);
+                    Person thirdTeacher = new Person("Galina", "Smirnova", "71228563",
+                            "smirnova@gmail.com", Role.TEACHER);
+
+                    lesson.addObjectToArray(firstLesson);
+                    teachersRepository.addObjectToArray(firstTeacher);
+                    studentsRepository.addObjectToArray(firstStudent);
+                    lesson.addObjectToArray(new Lessons("An.Geomertry", homeworkRepository.getAll(), "Page 29", secondTeacher, "Learn it"));
+                    lesson.addObjectToArray(new Lessons("MathAn", homeworkRepository.getAll(), "Page 30",
+                            thirdTeacher, "Learn it"));
+                    coursesService.printCoursesArray(cr.getAll());
+
+
+
                     break;
                 case 2:
                     teachersRepository.addObjectToArray(TeachersService.createTeachers());
@@ -135,7 +161,7 @@ public class Menu {
                             }
                         }
 
-                        Lessons L = new Lessons(name, (Homework[]) homeworkRepository.getAll(), dopInfo, person, description);
+                        Lessons L = new Lessons(name, homeworkRepository.getAll(), dopInfo, person, description);
                         L.setCourseId(courseId);
 
                         lesson.addObjectToArray(L);
