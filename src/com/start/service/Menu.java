@@ -6,6 +6,7 @@ import com.start.repository.*;
 
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -24,11 +25,13 @@ public class Menu {
         RepositoryService<Homework> homeworkRepository = new RepositoryService<>(Homework.class);
         homeworkRepository.addObjectToArray(HomeworkService.createHomework());
 
-        Scanner scanner = new Scanner(System.in);
 
 
-            int k = 0;
-            while (k != 5) {
+        int k = 0;
+        while (k != 5) {
+            try {
+                Scanner scanner = new Scanner(System.in);
+
                 System.out.println("Select a category:");
                 System.out.println("Create course & 3 lessons - press 1 *** ");
                 System.out.println("Create Teacher from servise - press 2 *** ");
@@ -43,6 +46,7 @@ public class Menu {
                 System.out.println("Exit - prees 5");
 
                 k = scanner.nextInt();
+
                 scanner.nextLine();
                 switch (k) {
                     case 1:
@@ -212,11 +216,17 @@ public class Menu {
                     break;
                 }
 
+            } catch (InputMismatchException e) {
+                System.out.println("Wrong chose");
             }
 
 
+            }
         }
 
 
     }
+
+
+
 

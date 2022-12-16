@@ -2,7 +2,9 @@ package com.start.repository;
 
 import com.start.models.SuperObject;
 
+import javax.persistence.EntityNotFoundException;
 import java.lang.reflect.Array;
+import java.util.InputMismatchException;
 
 public class RepositoryService<E> implements SuperRepository<E> {
     private E[] array;
@@ -93,33 +95,40 @@ public class RepositoryService<E> implements SuperRepository<E> {
     }
 
 
+
     public void getById(int id) {
+
+
         for (E n : getAll()) {
 
-            if (((SuperObject) n).getId() == id) {
-                System.out.println(n);
-            }
-
-
-        }
-    }
-
-
-    public E[] deleteById(int id) {
-        for (int i = 0; i < size; i++) {
-            if (((SuperObject) array[i]).getId() == id) {
-                for (int j = i; j < size - i; j++) {
-                    array[j] = array[j + 1];
+            try {
+                if (((SuperObject) n).getId() == id) {
+                    System.out.println(n);
                 }
-                size--;
-                array[size] = null;
 
-                break;
+
+            } catch (EntityNotFoundException e) {
+                System.out.println(e);
             }
         }
-
-
-        return getAll();
     }
 
-}
+
+        public E[] deleteById ( int id){
+            for (int i = 0; i < size; i++) {
+                if (((SuperObject) array[i]).getId() == id) {
+                    for (int j = i; j < size - i; j++) {
+                        array[j] = array[j + 1];
+                    }
+                    size--;
+                    array[size] = null;
+
+                    break;
+                }
+            }
+
+
+            return getAll();
+        }
+
+    }
