@@ -4,7 +4,7 @@ public abstract class  SuperObject {
 
     protected String name;
 
-    protected int id;
+    protected Integer id;
 
 
     public SuperObject(String name, int id) {
