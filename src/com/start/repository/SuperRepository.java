@@ -1,5 +1,7 @@
 package com.start.repository;
 
+import java.util.Iterator;
+
 public interface  SuperRepository<E>  {
 
     public int size();
@@ -26,4 +28,5 @@ public interface  SuperRepository<E>  {
 
 
     public  E[] deleteById(int id);
+    public Iterator findAll();
 }

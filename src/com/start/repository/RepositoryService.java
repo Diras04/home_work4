@@ -1,8 +1,10 @@
 package com.start.repository;
 
 import com.start.models.SuperObject;
+import com.start.service.SimpleIterator;
 
 import java.lang.reflect.Array;
+import java.util.Iterator;
 
 public class RepositoryService<E> implements SuperRepository<E> {
     private E[] array;
@@ -120,6 +122,11 @@ public class RepositoryService<E> implements SuperRepository<E> {
 
 
         return getAll();
+    }
+    public  Iterator findAll(){
+        SimpleIterator simpleIterator = new SimpleIterator(array);
+
+        return simpleIterator.iterator;
     }
 
 }

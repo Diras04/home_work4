@@ -68,6 +68,9 @@ public class Menu {
                         lesson.addObjectToArray(new Lessons("MathAn", homeworkRepository.getAll(), "Page 30",
                                 thirdTeacher, "Learn it"));
                         coursesService.printCoursesArray(cr.getAll());
+                        SimpleIterator simpleIterator = new SimpleIterator(lesson.getAll());
+                        System.out.println(simpleIterator.iterator.hasNext());
+
 
 
                         break;
