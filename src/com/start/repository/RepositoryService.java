@@ -1,132 +1,100 @@
 package com.start.repository;
 
+import com.start.models.Courses;
 import com.start.models.SuperObject;
 import com.start.service.SimpleIterator;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class RepositoryService<E> implements SuperRepository<E> {
-    private E[] array;
-    int size = 0;
-    int length = 1;
+    private ArrayList<E> array;
+
     Class<E> eClass1;
 
 
     public RepositoryService(Class<E> eClass) {
-        this.array = (E[]) Array.newInstance(eClass, length);
+        this.array = new ArrayList<E>();
         this.eClass1 = eClass;
     }
 
 
     public int size() {
-        return array.length;
+        return array.size();
     }
 
     public boolean isEmpty() {
-        return array.length == 0;
+        return array.size() == 0;
 
     }
 
     public E get(int index) {
-        return array[index];
+        return (E) array.get(index);
     }
 
 
     public void add(int index, E element) {
-        E[] newarray = (E[]) Array.newInstance(eClass1, array.length + 1);
-        for (int i = 0; i < index; i++) {
-            newarray[i] = array[i];
-        }
-        newarray[index] = element;
-        for (int j = index; j < array.length; j++) {
-            newarray[j + 1] = array[j];
-        }
-        array = newarray;
+        array.add(index, element);
 
     }
 
     public void remove(int index) {
-        for (int i = index; i < array.length - 1; i++) {
-            array[i] = array[i + 1];
-        }
-
+        array.remove(index);
     }
 
 
     public void addObjectToArray(E e) {
-
-
-        if (size < array.length) {
-            array[size] = e;
-        } else {
-            addSizeArray();
-            array[size] = e;
-
-        }
-        size++;
-
+        array.add(e);
 
     }
 
-
-    private void addSizeArray() {
-        E[] longArray = (E[]) Array.newInstance(eClass1, (array.length * 3 / 2) + 1);
-        System.arraycopy(array, 0, longArray, 0, array.length);
-        array = longArray;
-
-
-    }
 
     public boolean checkId(int inId) {
-        for (int j = 0; j < size; j++) {
-            if (((SuperObject) array[j]).getId() == inId) {
+        for (E n : array) {
+            if (((SuperObject) n).getId() == inId)
                 return true;
-            }
         }
+
         return false;
     }
 
 
-    public E[] getAll() {
-        E[] array1 = (E[]) Array.newInstance(eClass1, size);
-        System.arraycopy(array, 0, array1, 0, size);
-        return array1;
-    }
 
 
-    public void getById(int id) {
-        for (E n : getAll()) {
+        public ArrayList<E> getAll () {
 
-            if (((SuperObject) n).getId() == id) {
-                System.out.println(n);
-            }
-
-
+            return array;
         }
-    }
 
 
-    public E[] deleteById(int id) {
-        for (int i = 0; i < size; i++) {
-            if (((SuperObject) array[i]).getId() == id) {
-                for (int j = i; j < size - i; j++) {
-                    array[j] = array[j + 1];
+        public void getById ( int id){
+            for (E n : getAll()) {
+
+                if (((SuperObject) n).getId() == id) {
+                    System.out.println(n);
                 }
-                size--;
-                array[size] = null;
 
-                break;
+
             }
         }
 
 
-        return getAll();
-    }
-    public  Iterator findAll(){
-        SimpleIterator simpleIterator = new SimpleIterator(array);
+        public ArrayList deleteById ( int id){
+        int i =0;
+            for (E n : array) {
+                if (((SuperObject) n).getId() == id){
+                    array.remove(i);
+                }
+                    i++;
+            }
+          return array;
+        }
 
-        return simpleIterator.iterator;
-    }
+        public Iterator findAll () {
+            Iterator iterator = array.iterator();
 
-}
+            return iterator;
+        }
+
+    }

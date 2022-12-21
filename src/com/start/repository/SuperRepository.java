@@ -1,5 +1,6 @@
 package com.start.repository;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public interface  SuperRepository<E>  {
@@ -21,12 +22,13 @@ public interface  SuperRepository<E>  {
       public  boolean checkId(int inId);
 
 
-    public E[] getAll() ;
+    public ArrayList getAll() ;
 
 
     public  void getById(int id) ;
 
 
-    public  E[] deleteById(int id);
+    public  ArrayList deleteById(int id);
+
     public Iterator findAll();
 }

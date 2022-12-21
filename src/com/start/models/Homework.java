@@ -13,6 +13,7 @@ public class Homework extends SuperObject {
 
         this.id = idstatik;
         this.lessonId = Lessons.idstatik;
+        idstatik++;
 
     }
 

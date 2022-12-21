@@ -1,11 +1,14 @@
 package com.start.service;
 
 
+import com.start.models.Lessons;
 import com.start.models.Person;
 import com.start.models.Role;
 import com.start.models.SuperObject;
 
-public class StudentsService {
+import java.util.ArrayList;
+
+public class StudentsService<E> {
 
     public static Person createStudents() {
         Role role = Role.STUDENT;
@@ -14,11 +17,11 @@ public class StudentsService {
         return studentsServ;
     }
 
-    public void printStudentsArray(Person[] StudentsArray) {
-        for (Person n : StudentsArray) {
+    public void printStudentsArray(ArrayList<E> StudentsArray) {
+        for (E n : StudentsArray) {
 
-            System.out.println("Id - " + n.getId() + "; First Name - " + n.getName()+ "; Last Name - "
-                    + n.getLastname()+ "; Phone - " + n.getPhone()+ "; Email - " + n.getEmail()+ "; Role - " + n.getRole());
+            System.out.println("Id - " + ((Person)n).getId() + "; First Name - " + ((Person)n).getName()+ "; Last Name - "
+                    + ((Person)n).getLastname()+ "; Phone - " + ((Person)n).getPhone()+ "; Email - " + ((Person)n).getEmail()+ "; Role - " + ((Person)n).getRole());
 
 
         }

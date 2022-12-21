@@ -68,8 +68,7 @@ public class Menu {
                         lesson.addObjectToArray(new Lessons("MathAn", homeworkRepository.getAll(), "Page 30",
                                 thirdTeacher, "Learn it"));
                         coursesService.printCoursesArray(cr.getAll());
-                        SimpleIterator simpleIterator = new SimpleIterator(lesson.getAll());
-                        System.out.println(simpleIterator.iterator.hasNext());
+
 
 
 
@@ -146,10 +145,10 @@ public class Menu {
                             Person person = new Person(firstName, lastName, phone, email, Role.TEACHER);
                             int courseId = 0;
 
-                            if (cr.getAll().length > 0) {
+                            if (cr.getAll().size() > 0) {
                                 while (true) {
                                     System.out.println("All created Courses:");
-                                    coursesService.printCoursesArray((Courses[]) cr.getAll());
+                                    coursesService.printCoursesArray( cr.getAll());
 
                                     System.out.println("Enter the course ID");
 
@@ -170,7 +169,7 @@ public class Menu {
                             lesson.addObjectToArray(L);
                             System.out.println("Lessons:");
 
-                            lessonsService.printLessonsArray((Lessons[]) lesson.getAll());
+                            lessonsService.printLessonsArray(lesson.getAll());
                             System.out.println("Count of Lessons - " + Lessons.idstatik);
                         }
                         break;
@@ -180,15 +179,15 @@ public class Menu {
                         break;
                     case 6:
                         System.out.println("Base Lessons:");
-                        lessonsService.printLessonsArray((Lessons[]) lesson.getAll());
+                        lessonsService.printLessonsArray(lesson.getAll());
                         break;
                     case 7:
                         System.out.println("Base Students:");
-                        studentsService.printStudentsArray((Person[]) studentsRepository.getAll());
+                        studentsService.printStudentsArray(studentsRepository.getAll());
                         break;
                     case 8:
                         System.out.println("Base Teachers:");
-                        teachersService.printTeachersArray((Person[]) teachersRepository.getAll());
+                        teachersService.printTeachersArray( teachersRepository.getAll());
                         break;
                     case 10:
                         System.out.println("Enter lesson id");
@@ -198,12 +197,12 @@ public class Menu {
                     case 11:
                         System.out.println("Enter lesson id to delete");
                         int idDel = scanner.nextInt();
-                        lessonsService.printLessonsArray((Lessons[]) lesson.deleteById(idDel));
+                        lessonsService.printLessonsArray( lesson.deleteById(idDel));
                         break;
 
                     case 9:
                         System.out.println("Base Courses:");
-                        coursesService.printCoursesArray((Courses[]) cr.getAll());
+                        coursesService.printCoursesArray( cr.getAll());
                         break;
 
                     default:
