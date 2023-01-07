@@ -1,5 +1,7 @@
 package com.start.models;
 
+import java.util.Comparator;
+
 public class Person extends SuperObject{
     private static int idstatik = 1;
 
@@ -36,6 +38,18 @@ public class Person extends SuperObject{
     public String getEmail() {
         return email;
     }
+
+    public static Comparator<Person> personComparator = new Comparator<Person>() {
+
+        public int compare(Person p1, Person p2) {
+            String personName1 = p1.getLastname().toUpperCase();
+            String personName2 = p2.getLastname().toUpperCase();
+
+
+            return personName1.compareTo(personName2);
+
+
+        }};
 
     @Override
     public String toString() {

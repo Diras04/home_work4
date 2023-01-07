@@ -1,27 +1,29 @@
 package com.start.service;
 
-
-import com.start.models.Lessons;
+import com.start.models.Courses;
 import com.start.models.Person;
 import com.start.models.Role;
-import com.start.models.SuperObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class StudentsService<E> {
 
     public static Person createStudents() {
         Role role = Role.STUDENT;
-        Person studentsServ = new Person("Andriy","Derkach",
-                "0977320951","dira_s@gmail.com", role);
-        return studentsServ;
+        return new Person("Andriy", "Derkach",
+                "0977320951", "dira_s@gmail.com", role);
+
     }
 
-    public void printStudentsArray(ArrayList<E> StudentsArray) {
-        for (E n : StudentsArray) {
+    public void printStudentsArray(ArrayList<Person> studentsArray) {
+        Collections.sort(studentsArray, Person.personComparator);
+        for (Person n : studentsArray) {
 
-            System.out.println("Id - " + ((Person)n).getId() + "; First Name - " + ((Person)n).getName()+ "; Last Name - "
-                    + ((Person)n).getLastname()+ "; Phone - " + ((Person)n).getPhone()+ "; Email - " + ((Person)n).getEmail()+ "; Role - " + ((Person)n).getRole());
+            System.out.println("Id - " + ((Person) n).getId() + "; First Name - " + ((Person) n).getName() + "; Last Name - "
+                    + ((Person) n).getLastname() + "; Phone - " + ((Person) n).getPhone() + "; " +
+                    "Email - " + ((Person) n).getEmail() + "; Role - " + ((Person) n).getRole());
 
 
         }

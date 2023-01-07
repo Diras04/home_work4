@@ -1,17 +1,14 @@
 package com.start.service;
 
-import com.start.models.Homework;
 import com.start.models.Lessons;
-import com.start.models.SuperObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static java.lang.Character.*;
 
 
 public class LessonsService<E> {
-    public boolean chekName(String name) {
+    public boolean checkName(String name) {
         for (int j = 1; j < name.toCharArray().length; j++)
             if (isUpperCase(name.toCharArray()[0]) == false || isLowerCase(name.toCharArray()[j]) == false
                     || isLetter(name.toCharArray()[j]) == false) {
@@ -32,16 +29,14 @@ public class LessonsService<E> {
     }
 
     public boolean checkEmail(String email) {
-        if (email.contains("@"))
-            return true;
-        return false;
+        return email.contains("@");
+
 
     }
 
     public void printLessonsArray(ArrayList<E> lessonsArray) {
 
-        HomeworkService homeworkService = new HomeworkService();
-        for (E n : lessonsArray) {
+               for (E n : lessonsArray) {
 
 
             System.out.println("Id - " + ((Lessons) n).getId() + "; Name - " + ((Lessons) n).getName() + "; CourseId - " + ((Lessons) n).courseId +

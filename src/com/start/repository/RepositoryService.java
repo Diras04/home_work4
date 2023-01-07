@@ -1,10 +1,7 @@
 package com.start.repository;
 
-import com.start.models.Courses;
 import com.start.models.SuperObject;
-import com.start.service.SimpleIterator;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -60,41 +57,39 @@ public class RepositoryService<E> implements SuperRepository<E> {
     }
 
 
+    public ArrayList<E> getAll() {
 
-
-        public ArrayList<E> getAll () {
-
-            return array;
-        }
-
-
-        public void getById ( int id){
-            for (E n : getAll()) {
-
-                if (((SuperObject) n).getId() == id) {
-                    System.out.println(n);
-                }
-
-
-            }
-        }
-
-
-        public ArrayList deleteById ( int id){
-        int i =0;
-            for (E n : array) {
-                if (((SuperObject) n).getId() == id){
-                    array.remove(i);
-                }
-                    i++;
-            }
-          return array;
-        }
-
-        public Iterator findAll () {
-            Iterator iterator = array.iterator();
-
-            return iterator;
-        }
-
+        return array;
     }
+
+
+    public void getById(int id) {
+        for (E n : getAll()) {
+
+            if (((SuperObject) n).getId() == id) {
+                System.out.println(n);
+            }
+
+
+        }
+    }
+
+
+    public ArrayList deleteById(int id) {
+        int i = 0;
+        for (E n : array) {
+            if (((SuperObject) n).getId() == id) {
+                array.remove(i);
+            }
+            i++;
+        }
+        return array;
+    }
+
+    public Iterator findAll() {
+        Iterator iterator = array.iterator();
+
+        return iterator;
+    }
+
+}

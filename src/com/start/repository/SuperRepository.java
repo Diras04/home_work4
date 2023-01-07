@@ -30,5 +30,5 @@ public interface  SuperRepository<E>  {
 
     public  ArrayList deleteById(int id);
 
-    public Iterator findAll();
+    public Iterator<E> findAll();
 }

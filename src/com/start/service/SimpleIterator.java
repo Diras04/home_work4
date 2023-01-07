@@ -1,7 +1,5 @@
 package com.start.service;
 
-import com.start.repository.RepositoryService;
-
 import java.util.Iterator;
 
 public class SimpleIterator<E> {
@@ -11,7 +9,7 @@ public class SimpleIterator<E> {
     public SimpleIterator( E[] collection) {
         this.collection = collection;
     }
-   public Iterator<E> iterator = new Iterator<E>()
+   public  final Iterator<E> iterator = new Iterator<E>()
     {
         private int i = 0;
 
@@ -32,5 +30,5 @@ public class SimpleIterator<E> {
         }
     };
 
-       // iterator.forEachRemaining(System.out::println);
+
 }

@@ -7,7 +7,7 @@ public abstract class  SuperObject {
     protected Integer id;
 
 
-    public SuperObject(String name, int id) {
+    protected SuperObject(String name, int id) {
         this.name = name;
         this.id = id;
     }
