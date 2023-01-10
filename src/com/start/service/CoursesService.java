@@ -4,6 +4,7 @@ import com.start.models.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 
 public class CoursesService<E> {
@@ -14,15 +15,16 @@ public class CoursesService<E> {
 
 
 
-    public void printCoursesArray(ArrayList<Courses> coursesArray) {
+
+    public void printCoursesArray(List<Courses> coursesArray) {
         Collections.sort(coursesArray,Courses.coursesComparator);
 
         for (Courses n : coursesArray
         ) {
-            System.out.println("ID - " + ((SuperObject) n).getId() + "; Name - "
-                    + ((SuperObject) n).getName() + "; Lessons name - " + (((Courses) n).getLessonsinfo()).getName() +
-                    "; Lesson Id - " + ((Courses) n).getLessonsinfo().getId() + "; Students - " +
-                    ((Courses) n).getStudentinfo());
+            System.out.println("ID - " + n.getId() + "; Name - "
+                    + n.getName() + "; Lessons name - " + (n.getLessonsinfo()).getName() +
+                    "; Lesson Id - " + (n.getLessonsinfo().getId() + "; Students - " +
+                    n.getStudentinfo()));
 
         }
 

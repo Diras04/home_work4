@@ -4,15 +4,17 @@ import com.start.models.SuperObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class RepositoryService<E> implements SuperRepository<E> {
-    private ArrayList<E> array;
+
+    private List<E> array;
 
     Class<E> eClass1;
 
 
     public RepositoryService(Class<E> eClass) {
-        this.array = new ArrayList<E>();
+        this.array = new ArrayList<>();
         this.eClass1 = eClass;
     }
 
@@ -22,7 +24,7 @@ public class RepositoryService<E> implements SuperRepository<E> {
     }
 
     public boolean isEmpty() {
-        return array.size() == 0;
+        return array.isEmpty();
 
     }
 
@@ -57,7 +59,7 @@ public class RepositoryService<E> implements SuperRepository<E> {
     }
 
 
-    public ArrayList<E> getAll() {
+    public List<E> getAll() {
 
         return array;
     }
@@ -75,7 +77,7 @@ public class RepositoryService<E> implements SuperRepository<E> {
     }
 
 
-    public ArrayList deleteById(int id) {
+    public List deleteById(int id) {
         int i = 0;
         for (E n : array) {
             if (((SuperObject) n).getId() == id) {
@@ -86,7 +88,7 @@ public class RepositoryService<E> implements SuperRepository<E> {
         return array;
     }
 
-    public Iterator findAll() {
+    public Iterator<E> findAll() {
         Iterator iterator = array.iterator();
 
         return iterator;

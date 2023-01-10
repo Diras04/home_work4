@@ -1,6 +1,7 @@
 package com.start.service;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class SimpleIterator<E> {
     E[] collection;
@@ -20,7 +21,13 @@ public class SimpleIterator<E> {
 
         @Override
         public E next() {
-            return (E) collection[i++];
+            try {
+             if (collection[i++]!=null)  ;
+            }
+            catch (NoSuchElementException e){
+                System.out.println(e);
+            }
+            return collection[i++];
         }
         @Override
         public void remove() {

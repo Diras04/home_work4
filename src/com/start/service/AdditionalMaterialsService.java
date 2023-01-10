@@ -5,9 +5,10 @@ import com.start.models.Person;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class AdditionalMaterialsService {
-    public void printAmArray(ArrayList<AdditionalMaterials> amArray) {
+    public void printAmArray(List<AdditionalMaterials> amArray) {
         Collections.sort(amArray, AdditionalMaterials.amComparatorId);
         for (AdditionalMaterials n : amArray) {
 
@@ -16,7 +17,7 @@ public class AdditionalMaterialsService {
 
         }
     }
-    public void printAmArrayByLessonId(ArrayList<AdditionalMaterials> amArray) {
+    public void printAmArrayByLessonId(List<AdditionalMaterials> amArray) {
         Collections.sort(amArray, AdditionalMaterials.amComparatorIdLesson);
         for (AdditionalMaterials n : amArray) {
 
@@ -25,7 +26,7 @@ public class AdditionalMaterialsService {
 
         }
     }
-    public void printAmArrayByType(ArrayList<AdditionalMaterials> amArray) {
+    public void printAmArrayByType(List<AdditionalMaterials> amArray) {
         Collections.sort(amArray, AdditionalMaterials.amComparatorIdType);
         for (AdditionalMaterials n : amArray) {
 

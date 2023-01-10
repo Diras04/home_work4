@@ -1,19 +1,20 @@
 package com.start.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Lessons<E> extends SuperObject {
 
 
     public static int idstatik = 1;
 
-    private ArrayList<E> homeWork;
+    private List<E> homeWork;
     private String description;
     private String dopInfo;
     public int courseId;
     private Person person;
 
-    public Lessons(String name, ArrayList<E>  homeWork, String dopInfo, Person teacherinfo, String description) {
+    public Lessons(String name, List<E> homeWork, String dopInfo, Person teacherinfo, String description) {
         super(name, idstatik);
         this.homeWork = homeWork;
         this.dopInfo = dopInfo;
@@ -29,7 +30,7 @@ public class Lessons<E> extends SuperObject {
     }
 
 
-    public ArrayList<E> getHomeWork() {
+    public List<E> getHomeWork() {
         return homeWork;
     }
 

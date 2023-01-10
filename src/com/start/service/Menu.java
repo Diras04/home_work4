@@ -2,7 +2,6 @@ package com.start.service;
 
 import com.start.models.*;
 import com.start.repository.*;
-
 import java.util.Scanner;
 
 public class Menu {
@@ -163,7 +162,7 @@ public class Menu {
                     break;
                 case 8:
                     System.out.println("Base Teachers:");
-                    teachersService.printTeachersArray(teachersRepository.getAll());
+                    teachersService.printTeachersArray( teachersRepository.getAll());
                     break;
                 case 10:
                     System.out.println("Enter lesson id");
@@ -185,11 +184,11 @@ public class Menu {
 
                     break;
                 case 13:
-                    additionalMaterialsService.printAmArrayByLessonId(additionalMaterialsRepository.getAll());
+                    additionalMaterialsService.printAmArrayByLessonId( additionalMaterialsRepository.getAll());
 
                     break;
                 case 14:
-                    additionalMaterialsService.printAmArrayByType(additionalMaterialsRepository.getAll());
+                    additionalMaterialsService.printAmArrayByType( additionalMaterialsRepository.getAll());
 
                     break;
 

@@ -7,17 +7,18 @@ import com.start.models.Role;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 public class StudentsService<E> {
 
     public static Person createStudents() {
-        Role role = Role.STUDENT;
+
         return new Person("Andriy", "Derkach",
-                "0977320951", "dira_s@gmail.com", role);
+                "0977320951", "dira_s@gmail.com", Role.STUDENT);
 
     }
 
-    public void printStudentsArray(ArrayList<Person> studentsArray) {
+    public void printStudentsArray(List<Person> studentsArray) {
         Collections.sort(studentsArray, Person.personComparator);
         for (Person n : studentsArray) {
 

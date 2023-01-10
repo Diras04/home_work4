@@ -6,23 +6,24 @@ import com.start.models.Role;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class TeachersService<E> {
 
     public static Person createTeachers() {
 
-        Person teachersServ = new Person("Genadiy", "Bilozerov",
+        return new Person("Genadiy", "Bilozerov",
                 "5551287", "bilozerov@gmail.com", Role.TEACHER);
-        return teachersServ;
+
     }
 
-    public void printTeachersArray(ArrayList<Person> teachersArray) {
+    public void printTeachersArray(List<Person> teachersArray) {
         Collections.sort(teachersArray, Person.personComparator);
         for (Person n : teachersArray) {
 
-            System.out.println("Id - " + ((Person) n).getId() + "; First Name - " + ((Person) n).getName() + "; Last Name - "
-                    + ((Person) n).getLastname() + "; Phone - " + ((Person) n).getPhone() + ";" +
-                    " Email - " + ((Person) n).getEmail() + "; Role - " + ((Person) n).getRole());
+            System.out.println("Id - " +  n.getId() + "; First Name - " + n.getName() + "; Last Name - "
+                    +  n.getLastname() + "; Phone - " +  n.getPhone() + ";" +
+                    " Email - " + n.getEmail() + "; Role - " + n.getRole());
 
         }
 
