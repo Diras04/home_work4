@@ -242,8 +242,8 @@ public class Menu {
         AdditionalMaterials firstAm = new AdditionalMaterials("Geo", 1, ResourceType.URL, 1);
         AdditionalMaterials secondAm = new AdditionalMaterials("Math", 2, ResourceType.VIDEO, 2);
         AdditionalMaterials thirdAm = new AdditionalMaterials("English", 3, ResourceType.BOOK, 3);
-        AdditionalMaterials fourthAm = new AdditionalMaterials("Programing", 1, ResourceType.URL, 1);
-        AdditionalMaterials fiveAm = new AdditionalMaterials("Codding", 1, ResourceType.VIDEO, 2);
+        AdditionalMaterials fourthAm = new AdditionalMaterials("Programing", 1, ResourceType.URL, 4);
+        AdditionalMaterials fiveAm = new AdditionalMaterials("Codding", 1, ResourceType.VIDEO, 5);
         additionalMaterialsRepository.addObjectToArray(firstAm);
         additionalMaterialsRepository.addObjectToArray(secondAm);
         additionalMaterialsRepository.addObjectToArray(thirdAm);
