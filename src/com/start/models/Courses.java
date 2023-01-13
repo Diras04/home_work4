@@ -30,6 +30,7 @@ public class Courses extends SuperObject {
     public Person getStudentinfo() {
         return studentinfo;
     }
+
     public static Comparator<Courses> coursesComparator = new Comparator<Courses>() {
 
         public int compare(Courses c1, Courses c2) {
@@ -40,8 +41,8 @@ public class Courses extends SuperObject {
             return courseName1.compareTo(courseName2);
 
 
-        }};
-
+        }
+    };
 
 
     @Override

@@ -2,15 +2,13 @@ package com.start.models;
 
 import java.util.Comparator;
 
-public class Person extends SuperObject{
+public class Person extends SuperObject {
     private static int idstatik = 1;
 
     private Role role;
     private String lastname;
     private String phone;
     private String email;
-
-
 
 
     public Person(String firstname, String lastname, String phone, String email, Role role) {
@@ -49,7 +47,8 @@ public class Person extends SuperObject{
             return personName1.compareTo(personName2);
 
 
-        }};
+        }
+    };
 
     @Override
     public String toString() {

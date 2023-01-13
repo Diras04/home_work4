@@ -7,12 +7,11 @@ public class Homework extends SuperObject {
     private String task;
     private static String inname;
 
-    public Homework( String task) {
+    public Homework(String task) {
         super(inname, idstatik);
         this.task = task;
 
         this.id = idstatik;
-        this.lessonId = Lessons.idstatik;
         idstatik++;
 
     }
@@ -29,8 +28,9 @@ public class Homework extends SuperObject {
     @Override
     public String toString() {
         return "Homework{" +
-                "lessonId=" + lessonId +
+
                 ", task='" + task + '\'' +
+
                 ", id=" + id +
                 '}';
     }

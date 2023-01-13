@@ -3,8 +3,6 @@ package com.start.service;
 import com.start.models.Person;
 import com.start.models.Role;
 
-
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,8 +19,8 @@ public class TeachersService<E> {
         Collections.sort(teachersArray, Person.personComparator);
         for (Person n : teachersArray) {
 
-            System.out.println("Id - " +  n.getId() + "; First Name - " + n.getName() + "; Last Name - "
-                    +  n.getLastname() + "; Phone - " +  n.getPhone() + ";" +
+            System.out.println("Id - " + n.getId() + "; First Name - " + n.getName() + "; Last Name - "
+                    + n.getLastname() + "; Phone - " + n.getPhone() + ";" +
                     " Email - " + n.getEmail() + "; Role - " + n.getRole());
 
         }
