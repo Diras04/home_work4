@@ -2,26 +2,42 @@ package com.start.repository;
 
 import com.start.models.Log;
 import com.start.models.LogEnum;
+import com.start.service.LogService;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LogRepository {
+public final class LogRepository {
+    private static LogRepository instance;
     private List<Log> logArray;
+    LogService logService = new LogService();
 
-    public LogRepository() {
+    private LogRepository() {
         this.logArray = new ArrayList<>();
 
     }
-    public static Log createLogWarErr(String name, LogEnum level, String message, LocalDateTime time,
-                                      String stackrace){
-        return new Log(name,level,message,stackrace,time);
+
+    public static LogRepository getInstance() {
+        if (instance == null) {
+            instance = new LogRepository();
+        }
+        return instance;
     }
-    public static Log createLog(String name, LogEnum level, String message, LocalDateTime time){
-        return new Log(name,level,message,time);
-    }
-    public void addLog(Log log){
+
+    public void createLogWarErr(String name, LogEnum level, String message, LocalDateTime time,
+                                String stackrace) {
+
+        Log log = new Log(name, level, message, stackrace, time);
+        logService.writeLog(log);
         logArray.add(log);
     }
+
+    public void createLog(String name, LogEnum level, String message, LocalDateTime time) {
+        Log log = new Log(name, level, message, time);
+        logService.writeLog(log);
+        logArray.add(log);
+    }
+
+
 }

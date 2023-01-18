@@ -1,12 +1,17 @@
 package com.start.service;
 
+import com.start.Main;
 import com.start.models.*;
 import com.start.repository.*;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Menu {
+
     @FunctionalInterface
     public interface SwichCaseInterface {
 
@@ -218,28 +223,39 @@ public class Menu {
     public void mainMenu() {
         int k = 0;
         while (k != 5) {
-            System.out.println("Select a category:");
-            System.out.println("Create course & 3 lessons - press 1 *** ");
-            System.out.println("Create Teacher from servise - press 2 *** ");
-            System.out.println("Create Students from servise - press 3 *** ");
-            System.out.println("Lessons create from terminal - press 4 *** ");
-            System.out.println("Show all Lessons - press 6 *** ");
-            System.out.println("Show all Students - press 7 *** ");
-            System.out.println("Show all Teachers - press 8 *** ");
-            System.out.println("Show all Courses - press 9 *** ");
-            System.out.println("Find Lesson by Id - press 10 ***");
-            System.out.println("Delete Lesson by id - press 11 ***");
-            System.out.println("Show all AM - press 12 *** ");
-            System.out.println("Exit - prees 5");
+            try {
+                System.out.println("Select a category:");
+                System.out.println("Create course & 3 lessons - press 1 *** ");
+                System.out.println("Create Teacher from servise - press 2 *** ");
+                System.out.println("Create Students from servise - press 3 *** ");
+                System.out.println("Lessons create from terminal - press 4 *** ");
+                System.out.println("Show all Lessons - press 6 *** ");
+                System.out.println("Show all Students - press 7 *** ");
+                System.out.println("Show all Teachers - press 8 *** ");
+                System.out.println("Show all Courses - press 9 *** ");
+                System.out.println("Find Lesson by Id - press 10 ***");
+                System.out.println("Delete Lesson by id - press 11 ***");
+                System.out.println("Show all AM - press 12 *** ");
+                System.out.println("Exit - prees 5");
 
-            k = scanner.nextInt();
-            scanner.nextLine();
-            (swichCaseMap.get(k)).doSwichCase();
+                k = scanner.nextInt();
+                scanner.nextLine();
+                (swichCaseMap.get(k)).doSwichCase();
+            } catch (NullPointerException r) {
+                var value = Thread.currentThread().getStackTrace();
+                LogRepository.getInstance().createLogWarErr("Menu", LogEnum.ERROR, "Menu",
+                        LocalDateTime.now(), Arrays.deepToString(value));
+                System.out.println("Make correct choice" + r);
+
+            }
 
         }
     }
 
     private void createAll() {
+        if (Main.debugFlag) {
+            LogRepository.getInstance().createLog("Menu", LogEnum.DEBUG, "createAll", LocalDateTime.now());
+        }
         Homework homeworkLesson1 = new Homework("DM page25");
         Homework homeworkLesson2 = new Homework("An.Geo page 26");
         Homework homeworkLesson3 = new Homework("Math.An page 40");
