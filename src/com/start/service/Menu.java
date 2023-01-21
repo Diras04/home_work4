@@ -271,11 +271,27 @@ public class Menu {
         Lessons firstLesson = new Lessons("Discrete mathematics", "Page 26",
                 firstTeacher, "learn it");
 
-        Person firstStudent = new Person("Egor", "Bazaleev",
-                "781543", "bazaleev@gmail.com", Role.STUDENT);
+        Person firstStudent = new Person("First", "Student",
+                "781543", "first@gmail.com", Role.STUDENT);
 
-        Person secondStudent = new Person("Victor", "Slobodyanik",
-                "781543", "slob@gmail.com", Role.STUDENT);
+        Person secondStudent = new Person("Second", "Student",
+                "781543", "second@gmail.com", Role.STUDENT);
+        Person thirdStudent = new Person("Third", "Student",
+                "781543", "third@gmail.com", Role.STUDENT);
+        Person fourthStudent = new Person("Fourth", "Student",
+                "781543", "fource@gmail.com", Role.STUDENT);
+        Person fifthStudent = new Person("Fifth", "Student",
+                "781543", "fifth@gmail.com", Role.STUDENT);
+        Person sixthStudent = new Person("Sixth", "Student",
+                "781543", "sixth@gmail.com", Role.STUDENT);
+        Person seventhStudent = new Person("Seventh", "Student",
+                "781543", "seventh@gmail.com", Role.STUDENT);
+        Person eighthStudent = new Person("Eighth", "Student",
+                "781543", "eighth@gmail.com", Role.STUDENT);
+        Person ninthStudent = new Person("Ninth", "Student",
+                "781543", "ninth@gmail.com", Role.STUDENT);
+        Person tenthStudent = new Person("Tenth", "Student",
+                "781543", "tenth@gmail.com", Role.STUDENT);
 
 
         coursesRepository.addObjectToArray(CoursesService.createCoursre(firstLesson, firstStudent, "Math"));
@@ -286,8 +302,18 @@ public class Menu {
 
         lesson.addObjectToArray(firstLesson);
         teachersRepository.addObjectToArray(firstTeacher);
+
         studentsRepository.addObjectToArray(firstStudent);
         studentsRepository.addObjectToArray(secondStudent);
+        studentsRepository.addObjectToArray(thirdStudent);
+        studentsRepository.addObjectToArray(fourthStudent);
+        studentsRepository.addObjectToArray(fifthStudent);
+        studentsRepository.addObjectToArray(sixthStudent);
+        studentsRepository.addObjectToArray(seventhStudent);
+        studentsRepository.addObjectToArray(eighthStudent);
+        studentsRepository.addObjectToArray(ninthStudent);
+        studentsRepository.addObjectToArray(tenthStudent);
+
         teachersRepository.addObjectToArray(secondTeacher);
         lesson.addObjectToArray(new Lessons("An.Geomertry", "Page 29", secondTeacher, "Learn it"));
 
