@@ -11,11 +11,10 @@ public class LogService {
                 "; Message - " + log.getMessage() + "; Stacktrace - " + log.getStackTrace();
         try {
             File file = new File("Log.txt");
-            if (!file.exists()) {
+            if (!file.exists())
                 file.createNewFile();
-            } else {
-                System.out.println("File exist");
-            }
+
+
             BufferedWriter writer = new BufferedWriter(new FileWriter("Log.txt", true));
 
             writer.write(string);

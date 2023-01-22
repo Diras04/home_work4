@@ -6,9 +6,7 @@ import com.start.repository.*;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Menu {
 
@@ -204,6 +202,9 @@ public class Menu {
     SwichCaseInterface twelve = () -> {
         additionalMaterialsService.printAmArray(additionalMaterialsRepository.getAll());
     };
+    SwichCaseInterface thirteen = () -> {
+        studentsTest();
+    };
     Map<Integer, SwichCaseInterface> swichCaseMap = Map.ofEntries(
             Map.entry(1, one),
             Map.entry(2, two),
@@ -216,7 +217,8 @@ public class Menu {
             Map.entry(9, nine),
             Map.entry(10, ten),
             Map.entry(11, eleven),
-            Map.entry(12, twelve)
+            Map.entry(12, twelve),
+            Map.entry(13, thirteen)
     );
 
 
@@ -236,6 +238,7 @@ public class Menu {
                 System.out.println("Find Lesson by Id - press 10 ***");
                 System.out.println("Delete Lesson by id - press 11 ***");
                 System.out.println("Show all AM - press 12 *** ");
+                System.out.println("Students Test 13 *** ");
                 System.out.println("Exit - prees 5");
 
                 k = scanner.nextInt();
@@ -333,6 +336,42 @@ public class Menu {
         homeworkRepository.add(homeworkLesson1.lessonId, homeworkLesson1);
         homeworkRepository.add(homeworkLesson2.lessonId, homeworkLesson2);
         homeworkRepository.add(homeworkLesson3.lessonId, homeworkLesson3);
+
+
+    }
+
+    public  void  studentsTest() {
+
+        List<Thread> threadList = new ArrayList<Thread>();
+        List<String> tasks = Arrays.asList("Task1", "Task2", "Task3", "Task4", "Task5", "Task6", "Task7", "Task8", "Task9", "Task10");
+        Result[] results = new Result[10];
+        for (int j = 0; j < results.length; j++) {
+            results[j] = new Result();
+        }
+
+        for (int i = 0; i < studentsRepository.size(); i++) {
+            threadList.add(new Thread(new MyThread(studentsRepository.getAll().get(i).getName(),
+                    tasks.get(new Random().nextInt(9 - 0 + 1) + 0), results[i])));
+            threadList.get(i).start();
+        }
+        List<Result> bestStudents = new ArrayList<>();
+        System.out.println("Complete test:");
+        for (Result n : results) {
+            if (n.finalResult <= 12) {
+                bestStudents.add(n);
+            }
+        }
+        Collections.sort(bestStudents, Result.ResultComparator);
+        for (Result n : bestStudents) {
+            System.out.println("Student name - " + n.studentName + ", Result - " + n.finalResult);
+
+        }
+        System.out.println("Fail test:");
+        for (Result n : results) {
+            if (n.finalResult > 12) {
+                System.out.println("Student name - " + n.studentName + ", Result - " + n.finalResult);
+            }
+        }
 
 
     }
