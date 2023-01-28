@@ -4,14 +4,14 @@ import com.start.models.Log;
 import com.start.models.LogEnum;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-
-public class LogService {
+import java.nio.file.*;
 
 
-    public static void writeLog(Log log) {
+public class LogService  {
+    public static String init = "Level =OFF";
+
+
+    public static void writeLog(Log log)  {
         String string;
         string = "Time - " + log.getTime() + "; Level - " + log.getLevel() + "; Name - " + log.getName() +
                 "; Message - " + log.getMessage() + "; Stacktrace - " + log.getStackTrace();
@@ -20,15 +20,15 @@ public class LogService {
             if (!file.exists()) {
                 file.createNewFile();
             }
-            if (readLog("Level.txt").contains("DEBUG") && log.getLevel() == LogEnum.DEBUG) {
+            if (init.contains("DEBUG") && log.getLevel() == LogEnum.DEBUG) {
                 onlyWrite(string);
-            } else if (readLog("Level.txt").contains("INFO") && log.getLevel() != LogEnum.ERROR &&
+            } else if (init.contains("INFO") && log.getLevel() != LogEnum.ERROR &&
                     log.getLevel() != LogEnum.WARNING) {
                 onlyWrite(string);
-            } else if (readLog("Level.txt").contains("WARNING") && log.getLevel() != LogEnum.ERROR) {
+            } else if (init.contains("WARNING") && log.getLevel() != LogEnum.ERROR) {
                 onlyWrite(string);
 
-            } else if (readLog("Level.txt").contains("ERROR"))
+            } else if (init.contains("ERROR"))
                 onlyWrite(string);
 
 
@@ -39,14 +39,14 @@ public class LogService {
 
     }
 
-    public static String readLog(String string) {
+    public  void readLog(String string) {
         try {
 
 
             BufferedReader reader = new BufferedReader(new FileReader(string));
             String line;
             while ((line = reader.readLine()) != null) {
-                return line;
+                init= line;
 
             }
             reader.close();
@@ -55,7 +55,7 @@ public class LogService {
 
         }
 
-        return string;
+
     }
 
     public static void onlyWrite(String string) {
@@ -75,7 +75,7 @@ public class LogService {
 
     public void levelWriter(int i) {
         String[] log = new String[]{"DEBUG", "INFO", "WARNING", "ERROR"};
-        String fileName = "D:\\java\\Start\\OnlineSchool\\Level.txt";
+        String fileName = "D:\\java\\Start\\OnlineSchool\\Level\\Level.txt";
 
         try (BufferedWriter bf = Files.newBufferedWriter(Path.of(fileName),
                 StandardOpenOption.TRUNCATE_EXISTING)) {
@@ -84,6 +84,7 @@ public class LogService {
             e.printStackTrace();
         }
     }
+
 
 
 }

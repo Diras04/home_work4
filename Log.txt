@@ -1,0 +1,45 @@
+Time - 2023-01-28T18:27:10.516491; Level - DEBUG; Name - Menu; Message - createAll; Stacktrace - null
+Time - 2023-01-28T18:27:10.516491; Level - INFO; Name - RepositoryServiceMapa; Message - add; Stacktrace - null
+Time - 2023-01-28T18:27:10.516491; Level - INFO; Name - RepositoryServiceMapa; Message - add; Stacktrace - null
+Time - 2023-01-28T18:27:10.516491; Level - INFO; Name - RepositoryServiceMapa; Message - add; Stacktrace - null
+Time - 2023-01-28T18:27:10.516491; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.516491; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.516491; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryService; Message - getAll; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryServiceMapa; Message - add; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryServiceMapa; Message - add; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryServiceMapa; Message - add; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryServiceMapa; Message - add; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryServiceMapa; Message - add; Stacktrace - null
+Time - 2023-01-28T18:27:10.547761400; Level - INFO; Name - RepositoryServiceMapa; Message - add; Stacktrace - null
+Time - 2023-01-28T18:28:22.207737600; Level - INFO; Name - RepositoryService; Message - getAll; Stacktrace - null
+Time - 2023-01-28T18:28:22.223365200; Level - INFO; Name - RepositoryService; Message - getAll; Stacktrace - null
+Time - 2023-01-28T18:28:24.676392500; Level - INFO; Name - RepositoryServiceMapa; Message - add; Stacktrace - null
+Time - 2023-01-28T18:28:24.676392500; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:28:24.676392500; Level - INFO; Name - RepositoryService; Message - getAll; Stacktrace - null
+Time - 2023-01-28T18:31:31.628997900; Level - WARNING; Name - LessonsService; Message - checkName; Stacktrace - [java.base/java.lang.Thread.getStackTrace(Thread.java:2550), com.start.service.LessonsService.checkName(LessonsService.java:21), com.start.service.Menu.lambda$new$3(Menu.java:68), com.start.service.Menu.mainMenu(Menu.java:258), com.start.Main.main(Main.java:17)]
+Time - 2023-01-28T18:32:00.899559800; Level - WARNING; Name - LessonsService; Message - checkName; Stacktrace - [java.base/java.lang.Thread.getStackTrace(Thread.java:2550), com.start.service.LessonsService.checkName(LessonsService.java:21), com.start.service.Menu.lambda$new$3(Menu.java:68), com.start.service.Menu.mainMenu(Menu.java:258), com.start.Main.main(Main.java:17)]
+Time - 2023-01-28T18:32:14.514080800; Level - WARNING; Name - LessonsService; Message - checkName; Stacktrace - [java.base/java.lang.Thread.getStackTrace(Thread.java:2550), com.start.service.LessonsService.checkName(LessonsService.java:21), com.start.service.Menu.lambda$new$3(Menu.java:79), com.start.service.Menu.mainMenu(Menu.java:258), com.start.Main.main(Main.java:17)]
+Time - 2023-01-28T18:32:26.035227800; Level - WARNING; Name - LessonsService; Message - checkName; Stacktrace - [java.base/java.lang.Thread.getStackTrace(Thread.java:2550), com.start.service.LessonsService.checkName(LessonsService.java:21), com.start.service.Menu.lambda$new$3(Menu.java:79), com.start.service.Menu.mainMenu(Menu.java:258), com.start.Main.main(Main.java:17)]
+Time - 2023-01-28T18:32:32.902134700; Level - WARNING; Name - LessonsService; Message - checkPhone; Stacktrace - [java.base/java.lang.Thread.getStackTrace(Thread.java:2550), com.start.service.LessonsService.checkPhone(LessonsService.java:35), com.start.service.Menu.lambda$new$3(Menu.java:91), com.start.service.Menu.mainMenu(Menu.java:258), com.start.Main.main(Main.java:17)]
+Time - 2023-01-28T18:32:36.397410500; Level - WARNING; Name - LessonsService; Message - checkPhone; Stacktrace - [java.base/java.lang.Thread.getStackTrace(Thread.java:2550), com.start.service.LessonsService.checkPhone(LessonsService.java:35), com.start.service.Menu.lambda$new$3(Menu.java:91), com.start.service.Menu.mainMenu(Menu.java:258), com.start.Main.main(Main.java:17)]
+Time - 2023-01-28T18:32:39.760941; Level - INFO; Name - RepositoryService; Message - getAll; Stacktrace - null
+Time - 2023-01-28T18:32:39.760941; Level - INFO; Name - RepositoryService; Message - getAll; Stacktrace - null
+Time - 2023-01-28T18:32:41.584530800; Level - INFO; Name - RepositoryServiceMapa; Message - add; Stacktrace - null
+Time - 2023-01-28T18:32:41.584530800; Level - INFO; Name - RepositoryService; Message - addObjectToArray; Stacktrace - null
+Time - 2023-01-28T18:32:41.584530800; Level - INFO; Name - RepositoryService; Message - getAll; Stacktrace - null
+Time - 2023-01-28T18:33:24.757403900; Level - DEBUG; Name - Menu; Message - createAll; Stacktrace - null
