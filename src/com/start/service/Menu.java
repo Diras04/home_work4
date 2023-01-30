@@ -3,6 +3,8 @@ package com.start.service;
 import com.start.Main;
 import com.start.models.*;
 import com.start.repository.*;
+import com.start.server.Client;
+import com.start.server.Server;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -215,6 +217,15 @@ public class Menu {
         LogService logService = new LogService();
         logService.levelWriter(i);
     };
+   /* SwichCaseInterface fifteen = () -> {
+        Thread server = new Thread(new Server());
+        Thread client = new Thread(new Client());
+        server.start();
+        client.start();
+
+
+
+    };*/
     Map<Integer, SwichCaseInterface> swichCaseMap = Map.ofEntries(
             Map.entry(1, one),
             Map.entry(2, two),
@@ -229,7 +240,8 @@ public class Menu {
             Map.entry(11, eleven),
             Map.entry(12, twelve),
             Map.entry(13, thirteen),
-            Map.entry(14, fourteen)
+            Map.entry(14, fourteen)/*
+             Map.entry(15, fifteen)*/
     );
 
 
@@ -251,6 +263,7 @@ public class Menu {
                 System.out.println("Show all AM - press 12 *** ");
                 System.out.println("Students Test 13 *** ");
                 System.out.println("Change Level Log 14 *** ");
+                 //  System.out.println("Start Server 15 *** ");
                 System.out.println("Exit - prees 5");
 
                 k = scanner.nextInt();

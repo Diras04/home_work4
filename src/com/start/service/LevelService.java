@@ -10,7 +10,7 @@ LogService logService = new LogService();
         WatchService watchService = FileSystems.getDefault().newWatchService();
 
 
-        path.register(watchService, StandardWatchEventKinds.ENTRY_MODIFY);
+        path.register(watchService, StandardWatchEventKinds.ENTRY_MODIFY); 
 
 
         WatchKey key;

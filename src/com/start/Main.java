@@ -1,6 +1,9 @@
 package com.start;
 
 
+import com.start.server.Client;
+import com.start.server.Server;
+import com.start.server.ServerService;
 import com.start.service.LevelService;
 import com.start.service.LogService;
 import com.start.service.Menu;
@@ -11,10 +14,16 @@ public class Main {
     public static void main(String[] args) {
       debugFlag = true;
 
-        Thread log = new Thread(new LevelService());
+
+       Thread log = new Thread(new LevelService());
         log.start();
-        Menu menu = new Menu();
-       menu.mainMenu();
+       /* Menu menu = new Menu();
+       menu.mainMenu();*/
+        Thread server = new Thread(new Server());
+        Thread client = new Thread(new Client());
+
+        server.start();
+        client.start();
 
 
     }
