@@ -6,7 +6,7 @@ import com.start.models.Role;
 import java.util.Collections;
 import java.util.List;
 
-public class StudentsService<E> {
+public class StudentsService {
 
     public static Person createStudents() {
 

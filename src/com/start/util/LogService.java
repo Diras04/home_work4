@@ -1,4 +1,4 @@
-package com.start.service;
+package com.start.util;
 
 import com.start.models.Log;
 import com.start.models.LogEnum;
@@ -7,11 +7,13 @@ import java.io.*;
 import java.nio.file.*;
 
 
-public class LogService  {
+public class LogService {
     public static String init = "Level =OFF";
+    public static final String logFile = "Log.txt";
+    public static final String levelFile = "D:\\java\\Start\\OnlineSchool\\Level\\Level.txt";
 
 
-    public static void writeLog(Log log)  {
+    public static void writeLog(Log log) {
         String string;
         string = "Time - " + log.getTime() + "; Level - " + log.getLevel() + "; Name - " + log.getName() +
                 "; Message - " + log.getMessage() + "; Stacktrace - " + log.getStackTrace();
@@ -39,14 +41,14 @@ public class LogService  {
 
     }
 
-    public  void readLog(String string) {
+    public void readLog(String string) {
         try {
 
 
             BufferedReader reader = new BufferedReader(new FileReader(string));
             String line;
             while ((line = reader.readLine()) != null) {
-                init= line;
+                init = line;
 
             }
             reader.close();
@@ -61,7 +63,7 @@ public class LogService  {
     public static void onlyWrite(String string) {
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("Log.txt", true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true));
             writer.write(string);
             writer.write("\n");
 
@@ -75,16 +77,14 @@ public class LogService  {
 
     public void levelWriter(int i) {
         String[] log = new String[]{"DEBUG", "INFO", "WARNING", "ERROR"};
-        String fileName = "D:\\java\\Start\\OnlineSchool\\Level\\Level.txt";
 
-        try (BufferedWriter bf = Files.newBufferedWriter(Path.of(fileName),
+        try (BufferedWriter bf = Files.newBufferedWriter(Path.of(levelFile),
                 StandardOpenOption.TRUNCATE_EXISTING)) {
             bf.write("Level =" + log[i]);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
 
 }

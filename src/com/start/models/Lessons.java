@@ -1,7 +1,7 @@
 package com.start.models;
 
 
-public class Lessons<E> extends SuperObject {
+public class Lessons extends SuperObject {
 
 
     public static int idstatik = 1;

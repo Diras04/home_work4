@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class CoursesService<E> {
+public class CoursesService {
 
     public static Courses createCoursre(Lessons lessons, Person student, String name) {
         return new Courses(name, lessons, student);

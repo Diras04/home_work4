@@ -2,7 +2,7 @@ package com.start.repository;
 
 import com.start.models.Log;
 import com.start.models.LogEnum;
-import com.start.service.LogService;
+import com.start.util.LogService;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

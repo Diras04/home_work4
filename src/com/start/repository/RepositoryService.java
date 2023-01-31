@@ -38,7 +38,7 @@ public class RepositoryService<E> implements SuperRepository<E> {
     public E get(int index) {
         LogRepository.getInstance().createLog("RepositoryService", LogEnum.INFO,
                 "get", LocalDateTime.now());
-        return (E) array.get(index);
+        return  array.get(index);
     }
 
 

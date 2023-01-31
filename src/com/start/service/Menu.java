@@ -1,12 +1,9 @@
 package com.start.service;
-
 import com.start.Main;
 import com.start.models.*;
 import com.start.repository.*;
-import com.start.server.Client;
-import com.start.server.Server;
+import com.start.util.LogService;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -193,6 +190,8 @@ public class Menu {
                 case 3:
                     additionalMaterialsRepository.deleteById(id);
                     break;
+
+                default:
             }
         }
     };
