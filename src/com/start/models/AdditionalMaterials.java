@@ -1,6 +1,8 @@
 package com.start.models;
 
-public class AdditionalMaterials extends SuperObject {
+import java.io.Serializable;
+
+public class AdditionalMaterials extends SuperObject implements Serializable {
     private ResourceType resourceType;
     public int lessonId;
     public static int idstatik = 1;

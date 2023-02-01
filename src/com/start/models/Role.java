@@ -1,6 +1,8 @@
 package com.start.models;
 
-public enum Role  {
+import java.io.Serializable;
+
+public enum Role implements Serializable {
 
     TEACHER("teacher"),
     STUDENT("student");

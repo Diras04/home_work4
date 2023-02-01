@@ -11,7 +11,7 @@ public class StudentsService {
     public static Person createStudents() {
 
         return new Person("Andriy", "Derkach",
-                "0977320951", "dira_s@gmail.com", Role.STUDENT);
+                "0977320951", "dira_s@gmail.com", Role.STUDENT,1);
 
     }
 
@@ -21,7 +21,7 @@ public class StudentsService {
 
             System.out.println("Id - " + n.getId() + "; First Name - " + n.getName() + "; Last Name - "
                     + n.getLastname() + "; Phone - " + n.getPhone() + "; " +
-                    "Email - " + n.getEmail() + "; Role - " + n.getRole());
+                    "Email - " + n.getEmail() + "; Role - " + n.getRole() + "; Course ID - " + n.getFatherId());
 
 
         }

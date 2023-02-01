@@ -1,6 +1,8 @@
 package com.start.models;
 
-public enum ResourceType {
+import java.io.Serializable;
+
+public enum ResourceType implements Serializable {
     URL("url"),
     VIDEO("video"),
     BOOK("book");

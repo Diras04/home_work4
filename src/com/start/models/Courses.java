@@ -1,8 +1,9 @@
 package com.start.models;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class Courses extends SuperObject {
+public class Courses extends SuperObject implements Serializable {
 
     public static int idstatik = 1;
     private Lessons lessonsinfo;

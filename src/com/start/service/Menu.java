@@ -1,7 +1,10 @@
 package com.start.service;
+
 import com.start.Main;
 import com.start.models.*;
 import com.start.repository.*;
+import com.start.serializbl.Serializ;
+import com.start.serializbl.SortCourses;
 import com.start.util.LogService;
 
 import java.time.LocalDateTime;
@@ -29,6 +32,8 @@ public class Menu {
     RepositoryServiceMapa<Homework> homeworkRepository = new RepositoryServiceMapa<>(Homework.class);
     RepositoryServiceMapa<AdditionalMaterials> additionalMaterialsRepository = new RepositoryServiceMapa<>(AdditionalMaterials.class);
     AdditionalMaterialsService additionalMaterialsService = new AdditionalMaterialsService();
+    Serializ serializ = new Serializ();
+    SortCourses sortCourses = new SortCourses();
 
 
     SwichCaseInterface one = () -> {
@@ -102,7 +107,7 @@ public class Menu {
                 System.out.println("Enter real email");
             }
 
-            Person person = new Person(firstName, lastName, phone, email, Role.TEACHER);
+            Person person = new Person(firstName, lastName, phone, email, Role.TEACHER,1);
             int courseId = 0;
 
             if (coursesRepository.getAll().size() > 0) {
@@ -216,15 +221,17 @@ public class Menu {
         LogService logService = new LogService();
         logService.levelWriter(i);
     };
-   /* SwichCaseInterface fifteen = () -> {
-        Thread server = new Thread(new Server());
-        Thread client = new Thread(new Client());
-        server.start();
-        client.start();
+    SwichCaseInterface fifteen = () -> {
+
+        System.out.println("Enter Course id");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        sortCourses.sort(coursesRepository.getById(id),lesson.getAll(),studentsRepository.getAll());
+       serializ.serialize(sortCourses);
+        System.out.println(serializ.desireilize());
+    };
 
 
-
-    };*/
     Map<Integer, SwichCaseInterface> swichCaseMap = Map.ofEntries(
             Map.entry(1, one),
             Map.entry(2, two),
@@ -239,8 +246,8 @@ public class Menu {
             Map.entry(11, eleven),
             Map.entry(12, twelve),
             Map.entry(13, thirteen),
-            Map.entry(14, fourteen)/*
-             Map.entry(15, fifteen)*/
+            Map.entry(14, fourteen),
+            Map.entry(15, fifteen)
     );
 
 
@@ -262,8 +269,8 @@ public class Menu {
                 System.out.println("Show all AM - press 12 *** ");
                 System.out.println("Students Test 13 *** ");
                 System.out.println("Change Level Log 14 *** ");
-                 //  System.out.println("Start Server 15 *** ");
-                System.out.println("Exit - prees 5");
+                System.out.println("Find Courses by Id & serializate - press 15 ***");
+                             System.out.println("Exit - prees 5");
 
                 k = scanner.nextInt();
                 scanner.nextLine();
@@ -293,39 +300,39 @@ public class Menu {
 
 
         Person firstTeacher = new Person("Elena", "Simonova", "7531446",
-                "simonova@gmail.com", Role.TEACHER);
+                "simonova@gmail.com", Role.TEACHER,1);
 
         Lessons firstLesson = new Lessons("Discrete mathematics", "Page 26",
                 firstTeacher, "learn it");
 
         Person firstStudent = new Person("First", "Student",
-                "781543", "first@gmail.com", Role.STUDENT);
+                "781543", "first@gmail.com", Role.STUDENT,2);
 
         Person secondStudent = new Person("Second", "Student",
-                "781543", "second@gmail.com", Role.STUDENT);
+                "781543", "second@gmail.com", Role.STUDENT,1);
         Person thirdStudent = new Person("Third", "Student",
-                "781543", "third@gmail.com", Role.STUDENT);
+                "781543", "third@gmail.com", Role.STUDENT,2);
         Person fourthStudent = new Person("Fourth", "Student",
-                "781543", "fource@gmail.com", Role.STUDENT);
+                "781543", "fource@gmail.com", Role.STUDENT,1);
         Person fifthStudent = new Person("Fifth", "Student",
-                "781543", "fifth@gmail.com", Role.STUDENT);
+                "781543", "fifth@gmail.com", Role.STUDENT,2);
         Person sixthStudent = new Person("Sixth", "Student",
-                "781543", "sixth@gmail.com", Role.STUDENT);
+                "781543", "sixth@gmail.com", Role.STUDENT,1);
         Person seventhStudent = new Person("Seventh", "Student",
-                "781543", "seventh@gmail.com", Role.STUDENT);
+                "781543", "seventh@gmail.com", Role.STUDENT,2);
         Person eighthStudent = new Person("Eighth", "Student",
-                "781543", "eighth@gmail.com", Role.STUDENT);
+                "781543", "eighth@gmail.com", Role.STUDENT,1);
         Person ninthStudent = new Person("Ninth", "Student",
-                "781543", "ninth@gmail.com", Role.STUDENT);
+                "781543", "ninth@gmail.com", Role.STUDENT,2);
         Person tenthStudent = new Person("Tenth", "Student",
-                "781543", "tenth@gmail.com", Role.STUDENT);
+                "781543", "tenth@gmail.com", Role.STUDENT,1);
 
 
         coursesRepository.addObjectToArray(CoursesService.createCoursre(firstLesson, firstStudent, "Math"));
         Person secondTeacher = new Person("Svitlana", "Kovalchik",
-                "7885219", "kovalchik@gmail.com", Role.TEACHER);
+                "7885219", "kovalchik@gmail.com", Role.TEACHER,2);
         Person thirdTeacher = new Person("Galina", "Smirnova", "71228563",
-                "smirnova@gmail.com", Role.TEACHER);
+                "smirnova@gmail.com", Role.TEACHER,3);
 
         lesson.addObjectToArray(firstLesson);
         teachersRepository.addObjectToArray(firstTeacher);

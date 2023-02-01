@@ -85,17 +85,19 @@ public class RepositoryService<E> implements SuperRepository<E> {
     }
 
 
-    public void getById(int id) {
+    public E getById(int id) {
         LogRepository.getInstance().createLog("RepositoryService", LogEnum.INFO,
                 "getById", LocalDateTime.now());
         for (E n : getAll()) {
 
             if (((SuperObject) n).getId() == id) {
                 System.out.println(n);
+                return n;
             }
 
 
         }
+        return null;
     }
 
 

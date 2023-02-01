@@ -1,28 +1,35 @@
 package com.start.models;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class Person extends SuperObject {
+public class Person extends SuperObject implements Serializable {
     private static int idstatik = 1;
 
     private Role role;
     private String lastname;
     private String phone;
     private String email;
+    private int fatherId;
 
 
-    public Person(String firstname, String lastname, String phone, String email, Role role) {
+    public Person(String firstname, String lastname, String phone, String email, Role role, int fatherId) {
         super(firstname, idstatik);
         this.lastname = lastname;
         this.phone = phone;
         this.email = email;
         this.id = idstatik;
         this.role = role;
+        this.fatherId = fatherId;
         idstatik++;
     }
 
     public Role getRole() {
         return role;
+    }
+
+    public int getFatherId() {
+        return fatherId;
     }
 
     public String getLastname() {
@@ -57,7 +64,9 @@ public class Person extends SuperObject {
                 ", lastname='" + lastname + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", fatherId=" + fatherId +
                 ", name='" + name + '\'' +
+                ", id=" + id +
                 '}';
     }
 }

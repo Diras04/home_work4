@@ -1,7 +1,9 @@
 package com.start.models;
 
 
-public class Lessons extends SuperObject {
+import java.io.Serializable;
+
+public class Lessons extends SuperObject implements Serializable {
 
 
     public static int idstatik = 1;
@@ -37,6 +39,10 @@ public class Lessons extends SuperObject {
 
     public Person getPerson() {
         return person;
+    }
+
+    public int getCourseId() {
+        return courseId;
     }
 
     @Override

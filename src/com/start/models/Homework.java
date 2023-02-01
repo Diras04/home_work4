@@ -1,6 +1,8 @@
 package com.start.models;
 
-public class Homework extends SuperObject {
+import java.io.Serializable;
+
+public class Homework extends SuperObject implements Serializable {
 
     public int lessonId;
     public static int idstatik = 1;

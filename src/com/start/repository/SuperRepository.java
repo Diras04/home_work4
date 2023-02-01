@@ -25,7 +25,7 @@ public interface SuperRepository<E> {
     public List getAll();
 
 
-    public void getById(int id);
+    public E getById(int id);
 
 
     public List deleteById(int id);

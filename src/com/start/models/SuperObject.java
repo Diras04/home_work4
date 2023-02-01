@@ -1,6 +1,8 @@
 package com.start.models;
 
-public abstract class  SuperObject {
+import java.io.Serializable;
+
+public abstract class  SuperObject implements Serializable {
 
     protected String name;
 
