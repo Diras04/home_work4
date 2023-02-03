@@ -54,7 +54,9 @@ public class LessonsService<E> {
 
 
             System.out.println("Id - " + ((Lessons) n).getId() + "; Name - " + ((Lessons) n).getName() +
-                    "; CourseId - " + ((Lessons) n).courseId + "; Dop info - " + ((Lessons) n).getDopInfo() + "; Teacher - " + ((Lessons) n).getPerson());
+                    "; CourseId - " + ((Lessons) n).courseId + "; Dop info - " + ((Lessons) n).getDopInfo() +
+                    "; Teacher - " + ((Lessons) n).getPerson() + "; Lesson create - " + ((Lessons) n).getCreationDateToString() +
+                    "; Lesson date - " + ((Lessons) n).getLectureDateToString());
 
         }
 

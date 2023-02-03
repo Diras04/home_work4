@@ -2,6 +2,12 @@ package com.start.models;
 
 
 import java.io.Serializable;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Lessons extends SuperObject implements Serializable {
 
@@ -13,18 +19,38 @@ public class Lessons extends SuperObject implements Serializable {
     private String dopInfo;
     public int courseId;
     private Person person;
+    private LocalDateTime creationDate;
+    private LocalDateTime lectureDate;
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MMM d,EEE hh:mm:ss");
 
-    public Lessons(String name, String dopInfo, Person teacherinfo, String description) {
+
+    public Lessons(String name, String dopInfo, Person teacherinfo, String description, LocalDateTime lectureDate) {
+
         super(name, idstatik);
         this.dopInfo = dopInfo;
         this.courseId = Courses.idstatik;
         this.person = teacherinfo;
         this.description = description;
+        this.creationDate = LocalDateTime.now();
+        this.lectureDate = lectureDate;
         idstatik++;
 
     }
 
-    public void setCourseId(int courseId) {
+
+    public String getCreationDateToString() {
+        return dateTimeFormatter.format(creationDate);
+    }
+
+
+
+    public String getLectureDateToString() {
+
+        return dateTimeFormatter.format(lectureDate);
+    }
+
+
+        public void setCourseId(int courseId) {
         this.courseId = courseId;
     }
 
@@ -45,16 +71,26 @@ public class Lessons extends SuperObject implements Serializable {
         return courseId;
     }
 
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public LocalDateTime getLectureDate() {
+        return lectureDate;
+    }
+
     @Override
     public String toString() {
         return "Lessons{" +
-                ", name='" + name + '\'' +
-                // "homeWork=" + homeWork +
+                "homeWork=" + homeWork +
                 ", description='" + description + '\'' +
                 ", dopInfo='" + dopInfo + '\'' +
                 ", courseId=" + courseId +
                 ", person=" + person +
+                ", creationDate=" + creationDate +
+                ", lectureDate=" + lectureDate +
 
+                ", name='" + name + '\'' +
                 ", id=" + id +
                 '}';
     }

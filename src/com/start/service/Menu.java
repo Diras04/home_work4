@@ -107,7 +107,7 @@ public class Menu {
                 System.out.println("Enter real email");
             }
 
-            Person person = new Person(firstName, lastName, phone, email, Role.TEACHER,1);
+            Person person = new Person(firstName, lastName, phone, email, Role.TEACHER, 1);
             int courseId = 0;
 
             if (coursesRepository.getAll().size() > 0) {
@@ -127,8 +127,10 @@ public class Menu {
 
                 }
             }
-            Homework homeWorkFromTerminale = new Homework(homework);
-            Lessons lessonFromTerminal = new Lessons(name, dopInfo, person, description);
+            Homework homeWorkFromTerminale = new Homework(homework, LocalDateTime.of
+                    (2023, 11, 4, 13, 12, 30).plusDays(1));
+            Lessons lessonFromTerminal = new Lessons(name, dopInfo, person, description, LocalDateTime.of
+                    (2023, 11, 4, 13, 12, 30));
             lessonFromTerminal.setCourseId(courseId);
             homeworkRepository.add(lessonFromTerminal.getId(), homeWorkFromTerminale);
 
@@ -190,7 +192,7 @@ public class Menu {
                     break;
                 case 2:
                     System.out.println("Enter new homework");
-                    homeworkRepository.add(id, new Homework(scanner.nextLine()));
+                    homeworkRepository.add(id, new Homework(scanner.nextLine(), lesson.getById(id).getLectureDate().plusDays(1)));
                     break;
                 case 3:
                     additionalMaterialsRepository.deleteById(id);
@@ -226,8 +228,8 @@ public class Menu {
         System.out.println("Enter Course id");
         int id = scanner.nextInt();
         scanner.nextLine();
-        sortCourses.sort(coursesRepository.getById(id),lesson.getAll(),studentsRepository.getAll());
-       serializ.serialize(sortCourses);
+        sortCourses.sort(coursesRepository.getById(id), lesson.getAll(), studentsRepository.getAll());
+        serializ.serialize(sortCourses);
         System.out.println(serializ.desireilize());
     };
 
@@ -270,7 +272,7 @@ public class Menu {
                 System.out.println("Students Test 13 *** ");
                 System.out.println("Change Level Log 14 *** ");
                 System.out.println("Find Courses by Id & serializate - press 15 ***");
-                             System.out.println("Exit - prees 5");
+                System.out.println("Exit - prees 5");
 
                 k = scanner.nextInt();
                 scanner.nextLine();
@@ -290,49 +292,43 @@ public class Menu {
         if (Main.debugFlag) {
             LogRepository.getInstance().createLog("Menu", LogEnum.DEBUG, "createAll", LocalDateTime.now());
         }
-        Homework homeworkLesson1 = new Homework("DM page25");
-        Homework homeworkLesson2 = new Homework("An.Geo page 26");
-        Homework homeworkLesson3 = new Homework("Math.An page 40");
-
-        homeworkRepository.add(1, homeworkLesson1);
-        homeworkRepository.add(2, homeworkLesson2);
-        homeworkRepository.add(3, homeworkLesson3);
 
 
         Person firstTeacher = new Person("Elena", "Simonova", "7531446",
-                "simonova@gmail.com", Role.TEACHER,1);
+                "simonova@gmail.com", Role.TEACHER, 1);
 
         Lessons firstLesson = new Lessons("Discrete mathematics", "Page 26",
-                firstTeacher, "learn it");
+                firstTeacher, "learn it", LocalDateTime.of
+                (2023, 11, 4, 13, 12, 30));
 
         Person firstStudent = new Person("First", "Student",
-                "781543", "first@gmail.com", Role.STUDENT,2);
+                "781543", "first@gmail.com", Role.STUDENT, 2);
 
         Person secondStudent = new Person("Second", "Student",
-                "781543", "second@gmail.com", Role.STUDENT,1);
+                "781543", "second@gmail.com", Role.STUDENT, 1);
         Person thirdStudent = new Person("Third", "Student",
-                "781543", "third@gmail.com", Role.STUDENT,2);
+                "781543", "third@gmail.com", Role.STUDENT, 2);
         Person fourthStudent = new Person("Fourth", "Student",
-                "781543", "fource@gmail.com", Role.STUDENT,1);
+                "781543", "fource@gmail.com", Role.STUDENT, 1);
         Person fifthStudent = new Person("Fifth", "Student",
-                "781543", "fifth@gmail.com", Role.STUDENT,2);
+                "781543", "fifth@gmail.com", Role.STUDENT, 2);
         Person sixthStudent = new Person("Sixth", "Student",
-                "781543", "sixth@gmail.com", Role.STUDENT,1);
+                "781543", "sixth@gmail.com", Role.STUDENT, 1);
         Person seventhStudent = new Person("Seventh", "Student",
-                "781543", "seventh@gmail.com", Role.STUDENT,2);
+                "781543", "seventh@gmail.com", Role.STUDENT, 2);
         Person eighthStudent = new Person("Eighth", "Student",
-                "781543", "eighth@gmail.com", Role.STUDENT,1);
+                "781543", "eighth@gmail.com", Role.STUDENT, 1);
         Person ninthStudent = new Person("Ninth", "Student",
-                "781543", "ninth@gmail.com", Role.STUDENT,2);
+                "781543", "ninth@gmail.com", Role.STUDENT, 2);
         Person tenthStudent = new Person("Tenth", "Student",
-                "781543", "tenth@gmail.com", Role.STUDENT,1);
+                "781543", "tenth@gmail.com", Role.STUDENT, 1);
 
 
         coursesRepository.addObjectToArray(CoursesService.createCoursre(firstLesson, firstStudent, "Math"));
         Person secondTeacher = new Person("Svitlana", "Kovalchik",
-                "7885219", "kovalchik@gmail.com", Role.TEACHER,2);
+                "7885219", "kovalchik@gmail.com", Role.TEACHER, 2);
         Person thirdTeacher = new Person("Galina", "Smirnova", "71228563",
-                "smirnova@gmail.com", Role.TEACHER,3);
+                "smirnova@gmail.com", Role.TEACHER, 3);
 
         lesson.addObjectToArray(firstLesson);
         teachersRepository.addObjectToArray(firstTeacher);
@@ -349,13 +345,16 @@ public class Menu {
         studentsRepository.addObjectToArray(tenthStudent);
 
         teachersRepository.addObjectToArray(secondTeacher);
-        lesson.addObjectToArray(new Lessons("An.Geomertry", "Page 29", secondTeacher, "Learn it"));
+        lesson.addObjectToArray(new Lessons("An.Geomertry", "Page 29", secondTeacher, "Learn it", LocalDateTime.of
+                (2023, 11, 4, 13, 12, 30)));
 
         Lessons thirdlesson = new Lessons("MathAn", "Page 30",
-                thirdTeacher, "Learn it");
+                thirdTeacher, "Learn it", LocalDateTime.of
+                (2023, 11, 4, 13, 12, 30));
         lesson.addObjectToArray(thirdlesson);
         coursesRepository.addObjectToArray(CoursesService.createCoursre(thirdlesson, secondStudent, "Geo"));
-        coursesService.printCoursesArray(coursesRepository.getAll());
+
+
         AdditionalMaterials firstAm = new AdditionalMaterials("Geo", 1, ResourceType.URL, 1);
         AdditionalMaterials secondAm = new AdditionalMaterials("Math", 2, ResourceType.VIDEO, 2);
         AdditionalMaterials thirdAm = new AdditionalMaterials("English", 3, ResourceType.BOOK, 3);
@@ -363,6 +362,15 @@ public class Menu {
         additionalMaterialsRepository.add(firstAm.getLessonId(), firstAm);
         additionalMaterialsRepository.add(secondAm.getLessonId(), secondAm);
         additionalMaterialsRepository.add(thirdAm.getLessonId(), thirdAm);
+
+        Homework homeworkLesson1 = new Homework("DM page25", lesson.getById(1).getLectureDate().plusDays(1));
+        Homework homeworkLesson2 = new Homework("An.Geo page 26", lesson.getById(2).getLectureDate().plusDays(1));
+        Homework homeworkLesson3 = new Homework("Math.An page 40", lesson.getById(3).getLectureDate().plusDays(1));
+
+        homeworkRepository.add(1, homeworkLesson1);
+        homeworkRepository.add(2, homeworkLesson2);
+        homeworkRepository.add(3, homeworkLesson3);
+
 
         homeworkRepository.add(homeworkLesson1.lessonId, homeworkLesson1);
         homeworkRepository.add(homeworkLesson2.lessonId, homeworkLesson2);
