@@ -9,6 +9,8 @@ import com.start.util.LogService;
 
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Menu {
 
@@ -129,7 +131,7 @@ public class Menu {
             }
             Homework homeWorkFromTerminale = new Homework(homework);
             Lessons lessonFromTerminal = new Lessons(name, dopInfo, person, description, LocalDateTime.of
-                    (2023, 11, 4, 13, 12, 30),homeWorkFromTerminale);
+                    (2023, 11, 4, 13, 12, 30), homeWorkFromTerminale);
             lessonFromTerminal.setCourseId(courseId);
             homeworkRepository.add(lessonFromTerminal.getId(), homeWorkFromTerminale);
 
@@ -163,42 +165,111 @@ public class Menu {
         coursesService.printCoursesArray(coursesRepository.getAll());
     };
     SwichCaseInterface ten = () -> {
-
-        System.out.println("Enter lesson id");
-        int id = scanner.nextInt();
+        System.out.println("Make a choice:");
+        System.out.println("Show Lessons Starting with the date - press 1");
+        System.out.println("Show Lessons ending with a date - press 2");
+        System.out.println("Show lectures between dates - press 3 ");
+        System.out.println("Find Lesson by Id - press 4");
+        int l = scanner.nextInt();
         scanner.nextLine();
-        lesson.getById(id);
-        System.out.println(additionalMaterialsRepository.getById(id));
-        System.out.println(homeworkRepository.getById(id));
+        switch (l) {
+            case 1:
 
-        System.out.println("Do you wont to modify the file? Y/N");
+                System.out.println("Enter start date :");
+                System.out.println("Enter year :");
+                int year = scanner.nextInt();
+                System.out.println("Enter Month :");
+                int month = scanner.nextInt();
+                System.out.println("Enter day :");
+                int day = scanner.nextInt();
 
-        String name = scanner.nextLine();
-        if (name.equals("N"))
-            six.doSwichCase();
+                LocalDateTime date = LocalDateTime.of(year, month, day, 0, 0);
+                List<Lessons> data;
+                Predicate<Lessons> predicate = p -> p.getLectureDate().isAfter(date);
+                 data =  lesson.getAll().stream().filter(predicate).toList();
+                lessonsService.printLessonsArray(data);
 
-        else {
-            System.out.println("Make a choice:");
-            System.out.println("Delete HomeWork press 1");
-            System.out.println("Сhange HomeWork press 2");
-            System.out.println("Delete AM press 3");
-            System.out.println("Сhange AM press 4");
-            int k = scanner.nextInt();
-            scanner.nextLine();
-            switch (k) {
-                case 1:
-                    homeworkRepository.deleteById(id);
-                    break;
-                case 2:
-                    System.out.println("Enter new homework");
-                    homeworkRepository.add(id, new Homework(scanner.nextLine()));
-                    break;
-                case 3:
-                    additionalMaterialsRepository.deleteById(id);
-                    break;
 
-                default:
-            }
+                break;
+            case 2:
+                System.out.println("Enter ending date :");
+                System.out.println("Enter year :");
+                int year1 = scanner.nextInt();
+                System.out.println("Enter Month :");
+                int month1 = scanner.nextInt();
+                System.out.println("Enter day :");
+                int day1 = scanner.nextInt();
+
+                LocalDateTime date1 = LocalDateTime.of(year1, month1, day1, 0, 0);
+                List<Lessons> data1;
+                Predicate<Lessons> predicate1 = p -> p.getLectureDate().isBefore(date1);
+                data1 =  lesson.getAll().stream().filter(predicate1).toList();
+                lessonsService.printLessonsArray(data1);
+
+                break;
+            case 3:
+                System.out.println("Enter period :");
+                System.out.println("Enter start of period year :");
+                int yearS = scanner.nextInt();
+                System.out.println("Enter start of period Month :");
+                int monthS = scanner.nextInt();
+                System.out.println("Enter start of period day :");
+                int dayS = scanner.nextInt();
+                System.out.println("Enter end of period year :");
+                int yearE = scanner.nextInt();
+                System.out.println("Enter end of period Month :");
+                int monthE = scanner.nextInt();
+                System.out.println("Enter end of period day :");
+                int dayE = scanner.nextInt();
+
+                LocalDateTime dateS = LocalDateTime.of(yearS, monthS, dayS, 0, 0);
+                LocalDateTime dateE = LocalDateTime.of(yearE, monthE, dayE, 0, 0);
+                List<Lessons> data3;
+                Predicate<Lessons> predicate3 = p -> (p.getLectureDate().isBefore(dateE) && p.getLectureDate().isAfter(dateS));
+                data3 =  lesson.getAll().stream().filter(predicate3).toList();
+                lessonsService.printLessonsArray(data3);
+
+                break;
+
+
+            case 4:
+                System.out.println("Enter lesson id");
+                int id = scanner.nextInt();
+                scanner.nextLine();
+                lesson.getById(id);
+                System.out.println(additionalMaterialsRepository.getById(id));
+                System.out.println(homeworkRepository.getById(id));
+
+                System.out.println("Do you wont to modify the file? Y/N");
+
+                String name = scanner.nextLine();
+                if (name.equals("N"))
+                    six.doSwichCase();
+
+                else {
+                    System.out.println("Make a choice:");
+                    System.out.println("Delete HomeWork press 1");
+                    System.out.println("Сhange HomeWork press 2");
+                    System.out.println("Delete AM press 3");
+                    System.out.println("Сhange AM press 4");
+                    int k = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (k) {
+                        case 1:
+                            homeworkRepository.deleteById(id);
+                            break;
+                        case 2:
+                            System.out.println("Enter new homework");
+                            homeworkRepository.add(id, new Homework(scanner.nextLine()));
+                            break;
+                        case 3:
+                            additionalMaterialsRepository.deleteById(id);
+                            break;
+
+                        default:
+                    }
+                }
+            default:
         }
     };
     SwichCaseInterface eleven = () -> {
@@ -207,7 +278,16 @@ public class Menu {
         lessonsService.printLessonsArray(lesson.deleteById(idDel));
     };
     SwichCaseInterface twelve = () -> {
-        additionalMaterialsService.printAmArray(additionalMaterialsRepository.getAll());
+
+        System.out.println("Enter Lessons id");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        Map<Integer, AdditionalMaterials> filteredMap = additionalMaterialsRepository.getAll().entrySet()
+                .stream().filter(x -> x.getValue().getLessonId() == id)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        System.out.print("AdditionalMaterials by ID " + id + ": ");
+        additionalMaterialsService.printAmArray(filteredMap);
     };
     SwichCaseInterface thirteen = () -> {
         studentsTest();
@@ -267,7 +347,7 @@ public class Menu {
                 System.out.println("Show all Courses - press 9 *** ");
                 System.out.println("Find Lesson by Id - press 10 ***");
                 System.out.println("Delete Lesson by id - press 11 ***");
-                System.out.println("Show all AM - press 12 *** ");
+                System.out.println("Show AM by LessonsID - press 12 *** ");
                 System.out.println("Students Test 13 *** ");
                 System.out.println("Change Level Log 14 *** ");
                 System.out.println("Find Courses by Id & serializate - press 15 ***");
@@ -305,7 +385,7 @@ public class Menu {
 
         Lessons firstLesson = new Lessons("Discrete mathematics", "Page 26",
                 firstTeacher, "learn it", LocalDateTime.of
-                (2023, 11, 4, 13, 12, 30),homeworkLesson1);
+                (2023, 3, 4, 13, 12, 30), homeworkLesson1);
 
         Person firstStudent = new Person("First", "Student",
                 "781543", "first@gmail.com", Role.STUDENT, 2);
@@ -352,11 +432,11 @@ public class Menu {
 
         teachersRepository.addObjectToArray(secondTeacher);
         lesson.addObjectToArray(new Lessons("An.Geomertry", "Page 29", secondTeacher, "Learn it", LocalDateTime.of
-                (2023, 11, 4, 13, 12, 30),homeworkLesson2));
+                (2023, 4, 4, 13, 12, 30), homeworkLesson2));
 
         Lessons thirdlesson = new Lessons("MathAn", "Page 30",
                 thirdTeacher, "Learn it", LocalDateTime.of
-                (2023, 11, 4, 13, 12, 30),homeworkLesson3);
+                (2023, 5, 6, 13, 12, 30), homeworkLesson3);
         lesson.addObjectToArray(thirdlesson);
         coursesRepository.addObjectToArray(CoursesService.createCoursre(thirdlesson, secondStudent, "Geo"));
 
@@ -368,8 +448,6 @@ public class Menu {
         additionalMaterialsRepository.add(firstAm.getLessonId(), firstAm);
         additionalMaterialsRepository.add(secondAm.getLessonId(), secondAm);
         additionalMaterialsRepository.add(thirdAm.getLessonId(), thirdAm);
-
-
 
 
         homeworkRepository.add(homeworkLesson1.lessonId, homeworkLesson1);
