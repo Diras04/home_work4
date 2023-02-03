@@ -127,10 +127,9 @@ public class Menu {
 
                 }
             }
-            Homework homeWorkFromTerminale = new Homework(homework, LocalDateTime.of
-                    (2023, 11, 4, 13, 12, 30).plusDays(1));
+            Homework homeWorkFromTerminale = new Homework(homework);
             Lessons lessonFromTerminal = new Lessons(name, dopInfo, person, description, LocalDateTime.of
-                    (2023, 11, 4, 13, 12, 30));
+                    (2023, 11, 4, 13, 12, 30),homeWorkFromTerminale);
             lessonFromTerminal.setCourseId(courseId);
             homeworkRepository.add(lessonFromTerminal.getId(), homeWorkFromTerminale);
 
@@ -192,7 +191,7 @@ public class Menu {
                     break;
                 case 2:
                     System.out.println("Enter new homework");
-                    homeworkRepository.add(id, new Homework(scanner.nextLine(), lesson.getById(id).getLectureDate().plusDays(1)));
+                    homeworkRepository.add(id, new Homework(scanner.nextLine()));
                     break;
                 case 3:
                     additionalMaterialsRepository.deleteById(id);
@@ -292,6 +291,13 @@ public class Menu {
         if (Main.debugFlag) {
             LogRepository.getInstance().createLog("Menu", LogEnum.DEBUG, "createAll", LocalDateTime.now());
         }
+        Homework homeworkLesson1 = new Homework("DM page25");
+        Homework homeworkLesson2 = new Homework("An.Geo page 26");
+        Homework homeworkLesson3 = new Homework("Math.An page 40");
+
+        homeworkRepository.add(1, homeworkLesson1);
+        homeworkRepository.add(2, homeworkLesson2);
+        homeworkRepository.add(3, homeworkLesson3);
 
 
         Person firstTeacher = new Person("Elena", "Simonova", "7531446",
@@ -299,7 +305,7 @@ public class Menu {
 
         Lessons firstLesson = new Lessons("Discrete mathematics", "Page 26",
                 firstTeacher, "learn it", LocalDateTime.of
-                (2023, 11, 4, 13, 12, 30));
+                (2023, 11, 4, 13, 12, 30),homeworkLesson1);
 
         Person firstStudent = new Person("First", "Student",
                 "781543", "first@gmail.com", Role.STUDENT, 2);
@@ -346,11 +352,11 @@ public class Menu {
 
         teachersRepository.addObjectToArray(secondTeacher);
         lesson.addObjectToArray(new Lessons("An.Geomertry", "Page 29", secondTeacher, "Learn it", LocalDateTime.of
-                (2023, 11, 4, 13, 12, 30)));
+                (2023, 11, 4, 13, 12, 30),homeworkLesson2));
 
         Lessons thirdlesson = new Lessons("MathAn", "Page 30",
                 thirdTeacher, "Learn it", LocalDateTime.of
-                (2023, 11, 4, 13, 12, 30));
+                (2023, 11, 4, 13, 12, 30),homeworkLesson3);
         lesson.addObjectToArray(thirdlesson);
         coursesRepository.addObjectToArray(CoursesService.createCoursre(thirdlesson, secondStudent, "Geo"));
 
@@ -363,13 +369,7 @@ public class Menu {
         additionalMaterialsRepository.add(secondAm.getLessonId(), secondAm);
         additionalMaterialsRepository.add(thirdAm.getLessonId(), thirdAm);
 
-        Homework homeworkLesson1 = new Homework("DM page25", lesson.getById(1).getLectureDate().plusDays(1));
-        Homework homeworkLesson2 = new Homework("An.Geo page 26", lesson.getById(2).getLectureDate().plusDays(1));
-        Homework homeworkLesson3 = new Homework("Math.An page 40", lesson.getById(3).getLectureDate().plusDays(1));
 
-        homeworkRepository.add(1, homeworkLesson1);
-        homeworkRepository.add(2, homeworkLesson2);
-        homeworkRepository.add(3, homeworkLesson3);
 
 
         homeworkRepository.add(homeworkLesson1.lessonId, homeworkLesson1);
