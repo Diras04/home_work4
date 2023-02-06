@@ -5,6 +5,7 @@ import com.start.models.Role;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class TeachersService {
 
@@ -16,16 +17,18 @@ public class TeachersService {
     }
 
     public void printTeachersArray(List<Person> teachersArray) {
-        Collections.sort(teachersArray, Person.personComparator);
-        for (Person n : teachersArray) {
+        Optional<List<Person>> isNull = Optional.ofNullable(teachersArray);
+        if (isNull.isPresent()) {
+            Collections.sort(teachersArray, Person.personComparator);
+            for (Person n : teachersArray) {
 
-            System.out.println("Id - " + n.getId() + "; First Name - " + n.getName() + "; Last Name - "
-                    + n.getLastname() + "; Phone - " + n.getPhone() + ";" +
-                    " Email - " + n.getEmail() + "; Role - " + n.getRole() + "; Lessons ID - " + n.getRole());
+                System.out.println("Id - " + n.getId() + "; First Name - " + n.getName() + "; Last Name - "
+                        + n.getLastname() + "; Phone - " + n.getPhone() + ";" +
+                        " Email - " + n.getEmail() + "; Role - " + n.getRole() + "; Lessons ID - " + n.getRole());
+
+            }
 
         }
-
     }
-
 
 }

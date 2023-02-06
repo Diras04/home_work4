@@ -9,7 +9,7 @@ import java.nio.file.*;
 
 public class LogService {
     public static String init = "Level =OFF";
-    public static final String logFile = "Log.txt";
+    public static final String logFile = "D:\\java\\Start\\OnlineSchool\\Log.txt";
     public static final String levelFile = "D:\\java\\Start\\OnlineSchool\\Level\\Level.txt";
 
 
@@ -18,7 +18,7 @@ public class LogService {
         string = "Time - " + log.getTime() + "; Level - " + log.getLevel() + "; Name - " + log.getName() +
                 "; Message - " + log.getMessage() + "; Stacktrace - " + log.getStackTrace();
         try {
-            File file = new File("Log.txt");
+            File file = new File(logFile);
             if (!file.exists()) {
                 file.createNewFile();
             }

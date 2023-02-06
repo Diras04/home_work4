@@ -7,10 +7,15 @@ import com.start.serializbl.Serializ;
 import com.start.serializbl.SortCourses;
 import com.start.util.LogService;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Menu {
 
@@ -20,6 +25,7 @@ public class Menu {
         public void doSwichCase();
 
     }
+   File logFile = new File("D:\\java\\Start\\OnlineSchool\\Log.txt");
 
     Scanner scanner = new Scanner(System.in);
     LessonsService lessonsService = new LessonsService();
@@ -156,9 +162,11 @@ public class Menu {
 
     };
     SwichCaseInterface eight = () -> {
-        System.out.println("Base Teachers:");
-        teachersService.printTeachersArray(teachersRepository.getAll());
-
+        System.out.println("Base Teachers (Last name start < N):");
+        List<Person> data;
+        Predicate<Person> predicate = p ->  p.getLastname().compareTo("N") < 0;
+        data =  teachersRepository.getAll().stream().filter(predicate).toList();
+        teachersService.printTeachersArray(data);
     };
     SwichCaseInterface nine = () -> {
         System.out.println("Base Courses:");
@@ -311,6 +319,19 @@ public class Menu {
         serializ.serialize(sortCourses);
         System.out.println(serializ.desireilize());
     };
+    SwichCaseInterface sixteen = () -> {
+
+        try {
+            List data = new ArrayList<>();
+         data =  Files.lines(Paths.get(logFile.getAbsolutePath()))
+                    .flatMap( s -> Stream.of(s.split(";")))
+                    .filter(p->p.contains("Message"))
+                    .collect(Collectors.toList());
+            System.out.println(data);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    };
 
 
     Map<Integer, SwichCaseInterface> swichCaseMap = Map.ofEntries(
@@ -328,7 +349,8 @@ public class Menu {
             Map.entry(12, twelve),
             Map.entry(13, thirteen),
             Map.entry(14, fourteen),
-            Map.entry(15, fifteen)
+            Map.entry(15, fifteen),
+            Map.entry(16, sixteen)
     );
 
 
@@ -351,6 +373,7 @@ public class Menu {
                 System.out.println("Students Test 13 *** ");
                 System.out.println("Change Level Log 14 *** ");
                 System.out.println("Find Courses by Id & serializate - press 15 ***");
+                System.out.println("Show Log Message -  16 *** ");
                 System.out.println("Exit - prees 5");
 
                 k = scanner.nextInt();

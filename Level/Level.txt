@@ -1,1 +1,1 @@
-Level=DEBUG
+Level=INFO
