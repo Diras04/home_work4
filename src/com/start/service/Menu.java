@@ -25,7 +25,8 @@ public class Menu {
         public void doSwichCase();
 
     }
-   File logFile = new File("D:\\java\\Start\\OnlineSchool\\Log.txt");
+
+    File logFile = new File("D:\\java\\Start\\OnlineSchool\\Log.txt");
 
     Scanner scanner = new Scanner(System.in);
     LessonsService lessonsService = new LessonsService();
@@ -42,10 +43,12 @@ public class Menu {
     AdditionalMaterialsService additionalMaterialsService = new AdditionalMaterialsService();
     Serializ serializ = new Serializ();
     SortCourses sortCourses = new SortCourses();
+    AdditionalMaterialsRepositoryMapa additionalMaterialsRepositoryMapa = new AdditionalMaterialsRepositoryMapa();
 
 
     SwichCaseInterface one = () -> {
         createAll();
+
     };
     SwichCaseInterface two = () -> {
         teachersRepository.addObjectToArray(TeachersService.createTeachers());
@@ -110,9 +113,14 @@ public class Menu {
                 System.out.println("Enter teachers Email");
                 email = scanner.nextLine();
                 if (lessonsService.checkEmail(email)) {
-                    break;
-                }
-                System.out.println("Enter real email");
+                    if (lessonsService.duplicateСheckEmail(email, teachersRepository.getAll())) {
+                        break;
+                    } else {
+                        System.out.println("Such an email already exists, create a new one");
+                    }
+
+                } else
+                    System.out.println("Enter real email");
             }
 
             Person person = new Person(firstName, lastName, phone, email, Role.TEACHER, 1);
@@ -164,8 +172,8 @@ public class Menu {
     SwichCaseInterface eight = () -> {
         System.out.println("Base Teachers (Last name start < N):");
         List<Person> data;
-        Predicate<Person> predicate = p ->  p.getLastname().compareTo("N") < 0;
-        data =  teachersRepository.getAll().stream().filter(predicate).toList();
+        Predicate<Person> predicate = p -> p.getLastname().compareTo("N") < 0;
+        data = teachersRepository.getAll().stream().filter(predicate).toList();
         teachersService.printTeachersArray(data);
     };
     SwichCaseInterface nine = () -> {
@@ -194,7 +202,7 @@ public class Menu {
                 LocalDateTime date = LocalDateTime.of(year, month, day, 0, 0);
                 List<Lessons> data;
                 Predicate<Lessons> predicate = p -> p.getLectureDate().isAfter(date);
-                 data =  lesson.getAll().stream().filter(predicate).toList();
+                data = lesson.getAll().stream().filter(predicate).toList();
                 lessonsService.printLessonsArray(data);
 
 
@@ -211,7 +219,7 @@ public class Menu {
                 LocalDateTime date1 = LocalDateTime.of(year1, month1, day1, 0, 0);
                 List<Lessons> data1;
                 Predicate<Lessons> predicate1 = p -> p.getLectureDate().isBefore(date1);
-                data1 =  lesson.getAll().stream().filter(predicate1).toList();
+                data1 = lesson.getAll().stream().filter(predicate1).toList();
                 lessonsService.printLessonsArray(data1);
 
                 break;
@@ -234,7 +242,7 @@ public class Menu {
                 LocalDateTime dateE = LocalDateTime.of(yearE, monthE, dayE, 0, 0);
                 List<Lessons> data3;
                 Predicate<Lessons> predicate3 = p -> (p.getLectureDate().isBefore(dateE) && p.getLectureDate().isAfter(dateS));
-                data3 =  lesson.getAll().stream().filter(predicate3).toList();
+                data3 = lesson.getAll().stream().filter(predicate3).toList();
                 lessonsService.printLessonsArray(data3);
 
                 break;
@@ -323,14 +331,39 @@ public class Menu {
 
         try {
             List data = new ArrayList<>();
-         data =  Files.lines(Paths.get(logFile.getAbsolutePath()))
-                    .flatMap( s -> Stream.of(s.split(";")))
-                    .filter(p->p.contains("Message"))
+            data = Files.lines(Paths.get(logFile.getAbsolutePath()))
+                    .flatMap(s -> Stream.of(s.split(";")))
+                    .filter(p -> p.contains("Message"))
                     .collect(Collectors.toList());
             System.out.println(data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    };
+    SwichCaseInterface seventeen = () -> {
+
+        try {
+            List data = new ArrayList<>();
+            long count = Files.lines(Paths.get(logFile.getAbsolutePath()))
+                    .count();
+
+            data = Files.lines(Paths.get(logFile.getAbsolutePath()))
+                    .filter(p -> p.contains("INFO"))
+                    .skip((int) count / 2)
+                    .collect(Collectors.toList());
+            System.out.println("Count Info - " + data.size());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    };
+    SwichCaseInterface eighteen = () -> {
+        System.out.println("The lecture that was created before all others and with the largest number of AM:");
+        List<Lessons> les = new ArrayList<>();
+        les.add(lesson.getById
+                (lessonsService.checkLessonsFromData(lesson.getAll(), additionalMaterialsRepositoryMapa.getAll())));
+        lessonsService.printLessonsArray(les);
+
+
     };
 
 
@@ -350,7 +383,9 @@ public class Menu {
             Map.entry(13, thirteen),
             Map.entry(14, fourteen),
             Map.entry(15, fifteen),
-            Map.entry(16, sixteen)
+            Map.entry(16, sixteen),
+            Map.entry(17, seventeen),
+            Map.entry(18, eighteen)
     );
 
 
@@ -374,6 +409,8 @@ public class Menu {
                 System.out.println("Change Level Log 14 *** ");
                 System.out.println("Find Courses by Id & serializate - press 15 ***");
                 System.out.println("Show Log Message -  16 *** ");
+                System.out.println("Show INFO Count -  17 *** ");
+                System.out.println("Check Lessons DATA -  18 *** ");
                 System.out.println("Exit - prees 5");
 
                 k = scanner.nextInt();
@@ -406,9 +443,6 @@ public class Menu {
         Person firstTeacher = new Person("Elena", "Simonova", "7531446",
                 "simonova@gmail.com", Role.TEACHER, 1);
 
-        Lessons firstLesson = new Lessons("Discrete mathematics", "Page 26",
-                firstTeacher, "learn it", LocalDateTime.of
-                (2023, 3, 4, 13, 12, 30), homeworkLesson1);
 
         Person firstStudent = new Person("First", "Student",
                 "781543", "first@gmail.com", Role.STUDENT, 2);
@@ -433,13 +467,12 @@ public class Menu {
                 "781543", "tenth@gmail.com", Role.STUDENT, 1);
 
 
-        coursesRepository.addObjectToArray(CoursesService.createCoursre(firstLesson, firstStudent, "Math"));
         Person secondTeacher = new Person("Svitlana", "Kovalchik",
                 "7885219", "kovalchik@gmail.com", Role.TEACHER, 2);
         Person thirdTeacher = new Person("Galina", "Smirnova", "71228563",
                 "smirnova@gmail.com", Role.TEACHER, 3);
 
-        lesson.addObjectToArray(firstLesson);
+
         teachersRepository.addObjectToArray(firstTeacher);
 
         studentsRepository.addObjectToArray(firstStudent);
@@ -460,13 +493,23 @@ public class Menu {
         Lessons thirdlesson = new Lessons("MathAn", "Page 30",
                 thirdTeacher, "Learn it", LocalDateTime.of
                 (2023, 5, 6, 13, 12, 30), homeworkLesson3);
+        Lessons firstLesson = new Lessons("Discrete mathematics", "Page 26",
+                firstTeacher, "learn it", LocalDateTime.of
+                (2023, 3, 4, 13, 12, 30), homeworkLesson1);
         lesson.addObjectToArray(thirdlesson);
         coursesRepository.addObjectToArray(CoursesService.createCoursre(thirdlesson, secondStudent, "Geo"));
+        coursesRepository.addObjectToArray(CoursesService.createCoursre(firstLesson, firstStudent, "Math"));
 
-
+        lesson.addObjectToArray(firstLesson);
         AdditionalMaterials firstAm = new AdditionalMaterials("Geo", 1, ResourceType.URL, 1);
         AdditionalMaterials secondAm = new AdditionalMaterials("Math", 2, ResourceType.VIDEO, 2);
         AdditionalMaterials thirdAm = new AdditionalMaterials("English", 3, ResourceType.BOOK, 3);
+        AdditionalMaterials fourthAm = new AdditionalMaterials("New", 4, ResourceType.URL, 2);
+
+        additionalMaterialsRepositoryMapa.add(firstAm);
+        additionalMaterialsRepositoryMapa.add(secondAm);
+        additionalMaterialsRepositoryMapa.add(thirdAm);
+        additionalMaterialsRepositoryMapa.add(fourthAm);
 
         additionalMaterialsRepository.add(firstAm.getLessonId(), firstAm);
         additionalMaterialsRepository.add(secondAm.getLessonId(), secondAm);

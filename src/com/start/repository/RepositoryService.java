@@ -91,7 +91,7 @@ public class RepositoryService<E> implements SuperRepository<E> {
         for (E n : getAll()) {
 
             if (((SuperObject) n).getId() == id) {
-                System.out.println(n);
+
                 return n;
             }
 

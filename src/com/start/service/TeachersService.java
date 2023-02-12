@@ -19,7 +19,7 @@ public class TeachersService {
     public void printTeachersArray(List<Person> teachersArray) {
         Optional<List<Person>> isNull = Optional.ofNullable(teachersArray);
         if (isNull.isPresent()) {
-            Collections.sort(teachersArray, Person.personComparator);
+           // Collections.sort(teachersArray, Person.personComparator);
             for (Person n : teachersArray) {
 
                 System.out.println("Id - " + n.getId() + "; First Name - " + n.getName() + "; Last Name - "

@@ -1,1 +1,1 @@
-Level=INFO
+Level=ERROR
