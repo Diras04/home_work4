@@ -7,7 +7,9 @@ import com.start.serializbl.Serializ;
 import com.start.serializbl.SortCourses;
 import com.start.util.LogService;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -27,6 +29,7 @@ public class Menu {
     }
 
     File logFile = new File("D:\\java\\Start\\OnlineSchool\\Log.txt");
+    File studentsEmail = new File("D:\\java\\Start\\OnlineSchool\\StedentsEmail.txt");
 
     Scanner scanner = new Scanner(System.in);
     LessonsService lessonsService = new LessonsService();
@@ -374,10 +377,36 @@ public class Menu {
     };
     SwichCaseInterface twenty = () -> {
 
-        lesson.getAll().stream()
-                .collect(Collectors.groupingBy(Lessons::getPerson))
+        additionalMaterialsRepositoryMapa.getAll().values().stream()
+                .flatMap(s -> s.stream())
+                .collect(Collectors.groupingBy(AdditionalMaterials::getLessonId))
                 .entrySet().forEach(System.out::println);
 
+    };
+    SwichCaseInterface twentyOne = () -> {
+
+        Map<String, String> stringMap = teachersRepository.getAll().stream()
+                .collect(Collectors.toMap(Person::getEmail, p -> p.getName() + "; " + p.getLastname()));
+        teachersService.printTeachersArray(teachersRepository.getAll());
+        System.out.println(stringMap);
+    };
+    SwichCaseInterface twentyTwo = () -> {
+        List<String> emailSort = studentsRepository.getAll().stream()
+                .sorted(Comparator.comparing(Person::getEmail))
+                .map(p -> p.getEmail() + " - " + p.getName() + " - " + p.getLastname() + ";").toList();
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(studentsEmail, true));
+            for (String n :emailSort) {
+                writer.write(n);
+                writer.write("\n");
+            }
+
+                writer.flush();
+                writer.close();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     };
 
 
@@ -400,7 +429,10 @@ public class Menu {
             Map.entry(16, sixteen),
             Map.entry(17, seventeen),
             Map.entry(18, eighteen),
-            Map.entry(19, nineteen)
+            Map.entry(19, nineteen),
+            Map.entry(20, twenty),
+            Map.entry(21, twentyOne),
+            Map.entry(22, twentyTwo)
     );
 
 
@@ -427,6 +459,9 @@ public class Menu {
                 System.out.println("Show INFO Count -  17 *** ");
                 System.out.println("Check Lessons DATA -  18 *** ");
                 System.out.println("Group  Lessons by teacher-  19 *** ");
+                System.out.println("Group  AN by Lesson ID-  20 *** ");
+                System.out.println("Teacher Map-  21 *** ");
+                System.out.println("Email students to file -  22 *** ");
                 System.out.println("Exit - prees 5");
 
                 k = scanner.nextInt();
@@ -503,6 +538,7 @@ public class Menu {
         studentsRepository.addObjectToArray(tenthStudent);
 
         teachersRepository.addObjectToArray(secondTeacher);
+        teachersRepository.addObjectToArray(thirdTeacher);
         lesson.addObjectToArray(new Lessons("An.Geomertry", "Page 29", secondTeacher, "Learn it", LocalDateTime.of
                 (2023, 4, 4, 13, 12, 30), homeworkLesson2));
 
