@@ -365,6 +365,20 @@ public class Menu {
 
 
     };
+    SwichCaseInterface nineteen = () -> {
+
+        lesson.getAll().stream()
+                .collect(Collectors.groupingBy(Lessons::getPerson))
+                .entrySet().forEach(System.out::println);
+
+    };
+    SwichCaseInterface twenty = () -> {
+
+        lesson.getAll().stream()
+                .collect(Collectors.groupingBy(Lessons::getPerson))
+                .entrySet().forEach(System.out::println);
+
+    };
 
 
     Map<Integer, SwichCaseInterface> swichCaseMap = Map.ofEntries(
@@ -385,7 +399,8 @@ public class Menu {
             Map.entry(15, fifteen),
             Map.entry(16, sixteen),
             Map.entry(17, seventeen),
-            Map.entry(18, eighteen)
+            Map.entry(18, eighteen),
+            Map.entry(19, nineteen)
     );
 
 
@@ -411,6 +426,7 @@ public class Menu {
                 System.out.println("Show Log Message -  16 *** ");
                 System.out.println("Show INFO Count -  17 *** ");
                 System.out.println("Check Lessons DATA -  18 *** ");
+                System.out.println("Group  Lessons by teacher-  19 *** ");
                 System.out.println("Exit - prees 5");
 
                 k = scanner.nextInt();
@@ -496,11 +512,16 @@ public class Menu {
         Lessons firstLesson = new Lessons("Discrete mathematics", "Page 26",
                 firstTeacher, "learn it", LocalDateTime.of
                 (2023, 3, 4, 13, 12, 30), homeworkLesson1);
+        Lessons fourthLesson = new Lessons("TERVER", "Page 26",
+                firstTeacher, "learn it", LocalDateTime.of
+                (2023, 3, 4, 13, 12, 30), homeworkLesson1);
+
         lesson.addObjectToArray(thirdlesson);
         coursesRepository.addObjectToArray(CoursesService.createCoursre(thirdlesson, secondStudent, "Geo"));
         coursesRepository.addObjectToArray(CoursesService.createCoursre(firstLesson, firstStudent, "Math"));
 
         lesson.addObjectToArray(firstLesson);
+        lesson.addObjectToArray(fourthLesson);
         AdditionalMaterials firstAm = new AdditionalMaterials("Geo", 1, ResourceType.URL, 1);
         AdditionalMaterials secondAm = new AdditionalMaterials("Math", 2, ResourceType.VIDEO, 2);
         AdditionalMaterials thirdAm = new AdditionalMaterials("English", 3, ResourceType.BOOK, 3);
