@@ -69,3 +69,44 @@ CREATE TABLE `teachers` (
                             UNIQUE KEY `TeachersEmail_UNIQUE` (`TeachersEmail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
+    *****************************************Task40******************************
+
+    1.
+SELECT * FROM online_school.students
+order by studentsSecondName;
+
+2.
+SELECT LessonsName,create_date,  count(additionalmaterials.lessons_id) as AMCount FROM online_school.lessons, additionalmaterials
+where (lessons.idLessons = additionalmaterials.lessons_id) and
+    (create_date < '2023-01-01')
+group by LessonsName,create_date
+order by create_date;
+
+3.
+SELECT *
+FROM `lessons`
+WHERE `create_date` = (
+    SELECT MIN(`create_date`)
+    FROM `lessons`
+)
+ORDER BY (
+             SELECT COUNT(*)
+             FROM `homework`
+             WHERE `lessons_id` = `lessons`.`idLessons`
+         ) DESC
+    LIMIT 1;
+
+
+4.
+SELECT count(AdditionalMaterialsType), AdditionalMaterialsType FROM online_school.additionalmaterials
+group by AdditionalMaterialsType;
+
+5.
+SELECT * FROM online_school.teachers
+where TeachersSecondName REGEXP '^[A-N]';
+
+6.
+SELECT studentsFirstName,studentsSecondName,  count(c_w_s.coursesid) as courseCount FROM online_school.students, c_w_s
+where (students.idstudents = c_w_s.studentsid)
+group by studentsFirstName, studentsSecondName
+order by studentsSecondName;
