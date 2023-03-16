@@ -110,3 +110,59 @@ SELECT studentsFirstName,studentsSecondName,  count(c_w_s.coursesid) as courseCo
 where (students.idstudents = c_w_s.studentsid)
 group by studentsFirstName, studentsSecondName
 order by studentsSecondName;
+
+*********************************41**************************************************
+
+1.
+SELECT l.LessonsName, l.create_date, t.TeachersSecondName, t.TeachersFirstName
+FROM lessons l
+         JOIN teachers t ON l.TeacherId = t.idTeachers
+order by create_date;
+2.
+SELECT  t.TeachersSecondName, t.TeachersFirstName, count(l.TeacherId), l.TeacherId
+FROM lessons l
+         JOIN teachers t ON l.TeacherId = t.idTeachers
+group by TeacherId;
+3.
+SELECT  t.TeachersSecondName, t.TeachersFirstName, l.create_date, l.LessonsName, l.TeacherId
+FROM lessons l
+         JOIN teachers t ON l.TeacherId = t.idTeachers
+where l.TeacherId = '3'
+order by create_date;
+4.
+SELECT
+    c.idCourses,
+    c.Name,
+    COUNT(DISTINCT l.idLessons) AS LessonCount,
+    COUNT(DISTINCT s.idstudents) AS StudentCount,
+    COUNT(DISTINCT t.idTeachers) AS TeacherCount,
+    COUNT(DISTINCT hw.idHomeWork) AS HomeworkCount,
+    COUNT(DISTINCT ad.idAdditionalMaterials) AS AdditionalMaterialsCount
+FROM
+    courses c
+        LEFT JOIN
+    lessons l ON c.idCourses = l.courses_id
+        LEFT JOIN
+    c_w_s cws ON c.idCourses = cws.coursesid
+        LEFT JOIN
+    students s ON cws.studentsid = s.idstudents
+        LEFT JOIN
+    teachers t ON l.TeacherId = t.idTeachers
+        LEFT JOIN
+    homework hw ON l.idLessons = hw.lessons_id
+        LEFT JOIN
+    additionalmaterials ad ON l.idLessons = ad.lessons_id
+GROUP BY
+    c.idCourses, c.Name;
+5.
+SELECT DATE_FORMAT(create_date, '%M') AS month, COUNT(*) AS lecture_count
+FROM lessons
+GROUP BY month
+    6.
+SELECT 'homework' AS category, COUNT(idHomeWork) AS count
+FROM homework
+UNION ALL
+SELECT 'AM' AS category, COUNT(idAdditionalMaterials) AS count
+FROM additionalmaterials
+ORDER BY count DESC
+    LIMIT 1;
